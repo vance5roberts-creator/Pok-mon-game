@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Squeeze / Catalyst Screener</title>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --panel: #ffffff;
+    --border: #e2e2e6;
+    --text: #1a1a1e;
+    --muted: #6b6b74;
+    --accent: #7c5cff;
+    --hot-bg: #ffe4e0; --hot-text: #b3261e;
+    --warm-bg: #fff4d6; --warm-text: #92650b;
+    --cold-bg: #e9ecff; --cold-text: #3c4a9e;
+    --input-bg: #fbfbfc;
+    --danger: #d1453b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16161a;
+      --panel: #1e1e24;
+      --border: #33333c;
+      --text: #ececef;
+      --muted: #9a9aa4;
+      --accent: #a996ff;
+      --hot-bg: #3a1f1c; --hot-text: #ff8f85;
+      --warm-bg: #3a2f11; --warm-text: #ffcf6b;
+      --cold-bg: #1e2340; --cold-text: #a9b4ff;
+      --input-bg: #26262e;
+      --danger: #ff6b61;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    line-height: 1.4;
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; max-width: 70ch; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+  }
+  .panel h2 { font-size: 0.95rem; margin: 0 0 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px 20px;
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 0.78rem; color: var(--muted); }
+  .field .hint { font-size: 0.72rem; color: var(--muted); }
+  input[type=number], input[type=text] {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+  input[type=checkbox] { width: 16px; height: 16px; }
+  .checkbox-field { flex-direction: row; align-items: center; gap: 6px; }
+  .weights-live { font-size: 0.75rem; color: var(--muted); margin-top: 6px; grid-column: 1 / -1; }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  button {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  button.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  button.danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  button:hover { filter: brightness(1.08); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 1180px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; font-size: 0.82rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
+  td input { min-width: 62px; }
+  td input[data-field=symbol] { min-width: 70px; text-transform: uppercase; font-weight: 600; }
+  td input[data-field=catalystNote] { min-width: 160px; }
+  .computed { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+  .rating-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .rating-hot { background: var(--hot-bg); color: var(--hot-text); }
+  .rating-warm { background: var(--warm-bg); color: var(--warm-text); }
+  .rating-cold { background: var(--cold-bg); color: var(--cold-text); }
+  .flag-icon { color: var(--warm-text); cursor: default; font-size: 0.85rem; margin-left: 4px; }
+  .below-floor { opacity: 0.55; }
+  .row-delete { background: transparent; color: var(--muted); border: none; font-size: 1rem; cursor: pointer; padding: 2px 6px; }
+  .row-delete:hover { color: var(--danger); }
+  .empty-state { padding: 30px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  footer { margin-top: 18px; font-size: 0.75rem; color: var(--muted); max-width: 70ch; }
+</style>
+</head>
+<body>
+
+<h1>Short Squeeze / Catalyst Screener</h1>
+<p class="subtitle">
+  Manual-input scoring calculator. Enter data you've sourced yourself (short interest,
+  options flow, catalyst notes) and it computes Fuel / Catalyst / Options Flow scores and
+  a weighted composite rating, per the
+  <a href="methodology.md" style="color:inherit">screener methodology</a>.
+  Nothing here fetches live data — all inputs are yours.
+</p>
+
+<div class="panel">
+  <h2>Scoring weights &amp; thresholds</h2>
+  <div class="config-grid">
+    <div class="field">
+      <label for="w-fuel">Fuel weight (%)</label>
+      <input type="number" id="w-fuel" value="33.33" min="0" max="100" step="0.01" />
+    </div>
+    <div class="field">
+      <label for="w-catalyst">Catalyst weight (%)</label>
+      <input type="number" id="w-catalyst" value="33.33" min="0" max="100" step="0.01" />
+    </div>
+    <div class="field">
+      <label for="w-optflow">Options Flow weight (%)</label>
+      <input type="number" id="w-optflow" value="33.34" min="0" max="100" step="0.01" />
+    </div>
+    <div class="field">
+      <label for="hot-cutoff">Hot cutoff (composite &ge;)</label>
+      <input type="number" id="hot-cutoff" value="70" min="0" max="100" />
+    </div>
+    <div class="field">
+      <label for="warm-cutoff">Warm cutoff (composite &ge;)</label>
+      <input type="number" id="warm-cutoff" value="50" min="0" max="100" />
+    </div>
+    <div class="field">
+      <label for="mcap-floor">Market cap floor ($M)</label>
+      <input type="number" id="mcap-floor" value="300" min="0" />
+    </div>
+    <div class="field checkbox-field">
+      <input type="checkbox" id="hide-below-floor" />
+      <label for="hide-below-floor">Hide names below floor (instead of dimming)</label>
+    </div>
+    <div class="weights-live" id="weights-live"></div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <button id="add-row">+ Add ticker</button>
+  <button class="secondary" id="export-csv">Export CSV</button>
+  <button class="secondary" id="reset-weights">Reset weights to 1/3 each</button>
+  <button class="danger" id="clear-all">Clear all tickers</button>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Mkt Cap $M</th>
+        <th>SI % Float</th>
+        <th>DTC</th>
+        <th>Catalyst 0-100</th>
+        <th>Catalyst Note</th>
+        <th>C/P Ratio</th>
+        <th>Vol/OI</th>
+        <th>Opt N/A</th>
+        <th>Stale</th>
+        <th>Fuel</th>
+        <th>Opt Flow</th>
+        <th>Composite</th>
+        <th>Rating</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="rows-body"></tbody>
+  </table>
+  <div class="empty-state" id="empty-state" hidden>No tickers yet — click "+ Add ticker" to start.</div>
+</div>
+
+<footer>
+  Fuel = 0.6&middot;min(100, SI%/50&times;100) + 0.4&middot;min(100, DTC/10&times;100).
+  Options Flow = 0.5&middot;min(100, max(0,(C/P&minus;1)/2&times;100)) + 0.5&middot;min(100, max(0,(Vol/OI&minus;1)/2&times;100)),
+  or "N/A" if flagged, in which case Composite renormalizes over the remaining factors.
+  Composite = weighted average of Fuel / Catalyst / Options Flow using the weights above (normalized to sum 100%).
+  Data persists locally in this browser only.
+</footer>
+
+<script>
+(function () {
+  const STORAGE_KEY = "squeeze-screener-state-v1";
+
+  const defaultState = {
+    weights: { fuel: 33.33, catalyst: 33.33, optflow: 33.34 },
+    hotCutoff: 70,
+    warmCutoff: 50,
+    mcapFloor: 300,
+    hideBelowFloor: false,
+    rows: []
+  };
+
+  let state = loadState();
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return structuredClone(defaultState);
+      const parsed = JSON.parse(raw);
+      return Object.assign(structuredClone(defaultState), parsed);
+    } catch (e) {
+      return structuredClone(defaultState);
+    }
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function clamp(v, min, max) {
+    if (Number.isNaN(v)) return 0;
+    return Math.min(max, Math.max(min, v));
+  }
+
+  function computeFuel(row) {
+    const si = Number(row.siPercent) || 0;
+    const dtc = Number(row.dtc) || 0;
+    return 0.6 * clamp((si / 50) * 100, 0, 100) + 0.4 * clamp((dtc / 10) * 100, 0, 100);
+  }
+
+  function computeOptFlow(row) {
+    if (row.optFlowNA) return null;
+    const cp = Number(row.cpRatio) || 0;
+    const volOi = Number(row.volOiRatio) || 0;
+    const a = clamp(((cp - 1) / 2) * 100, 0, 100);
+    const b = clamp(((volOi - 1) / 2) * 100, 0, 100);
+    return 0.5 * a + 0.5 * b;
+  }
+
+  function normalizedWeights() {
+    const { fuel, catalyst, optflow } = state.weights;
+    const sum = (Number(fuel) || 0) + (Number(catalyst) || 0) + (Number(optflow) || 0);
+    if (sum <= 0) return { fuel: 1 / 3, catalyst: 1 / 3, optflow: 1 / 3 };
+    return { fuel: fuel / sum, catalyst: catalyst / sum, optflow: optflow / sum };
+  }
+
+  function computeComposite(row) {
+    const fuel = computeFuel(row);
+    const catalyst = clamp(Number(row.catalystScore) || 0, 0, 100);
+    const optFlow = computeOptFlow(row);
+    const w = normalizedWeights();
+
+    if (optFlow === null) {
+      const wSum = w.fuel + w.catalyst;
+      if (wSum <= 0) return { fuel, catalyst, optFlow, composite: 0 };
+      const composite = (fuel * w.fuel + catalyst * w.catalyst) / wSum;
+      return { fuel, catalyst, optFlow, composite };
+    }
+    const composite = fuel * w.fuel + catalyst * w.catalyst + optFlow * w.optflow;
+    return { fuel, catalyst, optFlow, composite };
+  }
+
+  function ratingFor(composite) {
+    if (composite >= Number(state.hotCutoff)) return { label: "Hot", cls: "rating-hot" };
+    if (composite >= Number(state.warmCutoff)) return { label: "Warm", cls: "rating-warm" };
+    return { label: "Cold", cls: "rating-cold" };
+  }
+
+  function fmt(n) {
+    return Number.isFinite(n) ? n.toFixed(1) : "—";
+  }
+
+  function newRow() {
+    return {
+      id: crypto.randomUUID(),
+      symbol: "",
+      price: "",
+      mcap: "",
+      siPercent: "",
+      dtc: "",
+      catalystScore: "",
+      catalystNote: "",
+      cpRatio: "",
+      volOiRatio: "",
+      optFlowNA: false,
+      stale: false
+    };
+  }
+
+  function syncConfigInputs() {
+    document.getElementById("w-fuel").value = state.weights.fuel;
+    document.getElementById("w-catalyst").value = state.weights.catalyst;
+    document.getElementById("w-optflow").value = state.weights.optflow;
+    document.getElementById("hot-cutoff").value = state.hotCutoff;
+    document.getElementById("warm-cutoff").value = state.warmCutoff;
+    document.getElementById("mcap-floor").value = state.mcapFloor;
+    document.getElementById("hide-below-floor").checked = state.hideBelowFloor;
+
+    const w = normalizedWeights();
+    document.getElementById("weights-live").textContent =
+      `Effective (normalized) weights — Fuel: ${(w.fuel * 100).toFixed(1)}%, ` +
+      `Catalyst: ${(w.catalyst * 100).toFixed(1)}%, Options Flow: ${(w.optflow * 100).toFixed(1)}%`;
+  }
+
+  function escapeAttr(v) {
+    return String(v ?? "").replace(/"/g, "&quot;");
+  }
+
+  function createRowElement(row) {
+    const tr = document.createElement("tr");
+    tr.dataset.id = row.id;
+    tr.innerHTML = `
+      <td><input type="text" data-field="symbol" value="${escapeAttr(row.symbol)}" placeholder="TICK" /></td>
+      <td><input type="number" data-field="price" value="${escapeAttr(row.price)}" step="0.01" placeholder="$" /></td>
+      <td><input type="number" data-field="mcap" value="${escapeAttr(row.mcap)}" step="1" placeholder="$M" /></td>
+      <td><input type="number" data-field="siPercent" value="${escapeAttr(row.siPercent)}" step="0.1" placeholder="%" /></td>
+      <td><input type="number" data-field="dtc" value="${escapeAttr(row.dtc)}" step="0.1" /></td>
+      <td><input type="number" data-field="catalystScore" value="${escapeAttr(row.catalystScore)}" min="0" max="100" step="1" /></td>
+      <td><input type="text" data-field="catalystNote" value="${escapeAttr(row.catalystNote)}" placeholder="earnings 8/1, FDA PDUFA..." /></td>
+      <td><input type="number" data-field="cpRatio" value="${escapeAttr(row.cpRatio)}" step="0.1" ${row.optFlowNA ? "disabled" : ""} /></td>
+      <td><input type="number" data-field="volOiRatio" value="${escapeAttr(row.volOiRatio)}" step="0.1" ${row.optFlowNA ? "disabled" : ""} /></td>
+      <td><input type="checkbox" data-field="optFlowNA" ${row.optFlowNA ? "checked" : ""} /></td>
+      <td><input type="checkbox" data-field="stale" ${row.stale ? "checked" : ""} /></td>
+      <td class="computed" data-col="fuel"></td>
+      <td class="computed" data-col="optflow"></td>
+      <td class="computed" data-col="composite"></td>
+      <td data-col="rating"></td>
+      <td><button class="row-delete" data-action="delete" title="Delete row">&times;</button></td>
+    `;
+    return tr;
+  }
+
+  // Updates only the computed cells + below-floor styling for one row's <tr>,
+  // in place, so the row's own input elements (and focus) are never touched.
+  function updateRowComputed(tr, row) {
+    const { fuel, optFlow, composite } = computeComposite(row);
+    const rating = ratingFor(composite);
+
+    tr.querySelector('[data-col="fuel"]').textContent = fmt(fuel);
+    tr.querySelector('[data-col="optflow"]').textContent = optFlow === null ? "N/A" : fmt(optFlow);
+    tr.querySelector('[data-col="composite"]').innerHTML =
+      fmt(composite) + (row.stale ? '<span class="flag-icon" title="Flagged stale/unverified">&#9888;</span>' : "");
+    tr.querySelector('[data-col="rating"]').innerHTML = `<span class="rating-badge ${rating.cls}">${rating.label}</span>`;
+
+    const floor = Number(state.mcapFloor) || 0;
+    const belowFloor = floor > 0 && row.mcap !== "" && Number(row.mcap) < floor;
+    tr.classList.toggle("below-floor", belowFloor);
+
+    return composite;
+  }
+
+  // Full rebuild: used for add/delete row, clear-all, initial load, and
+  // global config changes (weights/thresholds/floor) — never while a row's
+  // own input is focused, so destroying/recreating row elements is safe here.
+  function renderAll() {
+    syncConfigInputs();
+
+    const tbody = document.getElementById("rows-body");
+    const emptyState = document.getElementById("empty-state");
+    tbody.innerHTML = "";
+
+    if (state.rows.length === 0) {
+      emptyState.hidden = false;
+      return;
+    }
+    emptyState.hidden = true;
+
+    const floor = Number(state.mcapFloor) || 0;
+    const scored = state.rows.map((row) => ({ row, composite: computeComposite(row).composite }));
+    scored.sort((a, b) => b.composite - a.composite);
+
+    for (const { row } of scored) {
+      const belowFloor = floor > 0 && row.mcap !== "" && Number(row.mcap) < floor;
+      if (belowFloor && state.hideBelowFloor) continue;
+      const tr = createRowElement(row);
+      tbody.appendChild(tr);
+      updateRowComputed(tr, row);
+    }
+  }
+
+  // Reorders the *existing* <tr> DOM nodes by composite score (moving nodes,
+  // never recreating them), so a row mid-edit never loses focus or gets
+  // replaced. Used on blur/change of any row field.
+  function resortRows() {
+    const tbody = document.getElementById("rows-body");
+    const trs = Array.from(tbody.querySelectorAll("tr"));
+    const withComposite = trs.map((tr) => {
+      const row = state.rows.find((r) => r.id === tr.dataset.id);
+      return { tr, composite: row ? computeComposite(row).composite : -Infinity };
+    });
+    withComposite.sort((a, b) => b.composite - a.composite);
+    for (const { tr } of withComposite) tbody.appendChild(tr);
+  }
+
+  // --- event wiring ---
+
+  document.getElementById("add-row").addEventListener("click", () => {
+    state.rows.push(newRow());
+    saveState();
+    renderAll();
+  });
+
+  document.getElementById("clear-all").addEventListener("click", () => {
+    if (state.rows.length && !confirm("Delete all tickers? This can't be undone.")) return;
+    state.rows = [];
+    saveState();
+    renderAll();
+  });
+
+  document.getElementById("reset-weights").addEventListener("click", () => {
+    state.weights = { fuel: 33.33, catalyst: 33.33, optflow: 33.34 };
+    saveState();
+    renderAll();
+  });
+
+  document.getElementById("export-csv").addEventListener("click", () => {
+    const headers = ["Symbol","Price","MktCap$M","SI%Float","DTC","CatalystScore","CatalystNote",
+      "C/P","Vol/OI","OptFlowNA","Stale","Fuel","OptFlow","Composite","Rating"];
+    const lines = [headers.join(",")];
+    const scored = state.rows.map((row) => ({ row, ...computeComposite(row) }));
+    scored.sort((a, b) => b.composite - a.composite);
+    for (const { row, fuel, catalyst, optFlow, composite } of scored) {
+      const rating = ratingFor(composite).label;
+      const cells = [
+        row.symbol, row.price, row.mcap, row.siPercent, row.dtc, row.catalystScore,
+        `"${String(row.catalystNote ?? "").replace(/"/g, '""')}"`,
+        row.cpRatio, row.volOiRatio, row.optFlowNA ? "Y" : "N", row.stale ? "Y" : "N",
+        fmt(fuel), optFlow === null ? "N/A" : fmt(optFlow), fmt(composite), rating
+      ];
+      lines.push(cells.join(","));
+    }
+    const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `squeeze-screen-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  ["w-fuel", "w-catalyst", "w-optflow", "hot-cutoff", "warm-cutoff", "mcap-floor"].forEach((id) => {
+    document.getElementById(id).addEventListener("input", (e) => {
+      const map = {
+        "w-fuel": () => (state.weights.fuel = Number(e.target.value)),
+        "w-catalyst": () => (state.weights.catalyst = Number(e.target.value)),
+        "w-optflow": () => (state.weights.optflow = Number(e.target.value)),
+        "hot-cutoff": () => (state.hotCutoff = Number(e.target.value)),
+        "warm-cutoff": () => (state.warmCutoff = Number(e.target.value)),
+        "mcap-floor": () => (state.mcapFloor = Number(e.target.value))
+      };
+      map[id]();
+      saveState();
+      renderAll();
+    });
+  });
+
+  document.getElementById("hide-below-floor").addEventListener("change", (e) => {
+    state.hideBelowFloor = e.target.checked;
+    saveState();
+    renderAll();
+  });
+
+  const AFFECTS_COMPUTED = ["siPercent", "dtc", "catalystScore", "cpRatio", "volOiRatio", "optFlowNA", "stale", "mcap"];
+
+  function applyFieldToState(e) {
+    const field = e.target.dataset.field;
+    if (!field) return null;
+    const tr = e.target.closest("tr");
+    const row = state.rows.find((r) => r.id === tr.dataset.id);
+    if (!row) return null;
+    row[field] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    return { field, tr, row };
+  }
+
+  // Live feedback while typing: update this row's computed cells in place.
+  // Never touches sort order or recreates any input, so focus is preserved.
+  document.getElementById("rows-body").addEventListener("input", (e) => {
+    const result = applyFieldToState(e);
+    if (!result) return;
+    const { field, tr, row } = result;
+    saveState();
+
+    if (field === "optFlowNA") {
+      tr.querySelector('[data-field="cpRatio"]').disabled = row.optFlowNA;
+      tr.querySelector('[data-field="volOiRatio"]').disabled = row.optFlowNA;
+    }
+    if (AFFECTS_COMPUTED.includes(field)) updateRowComputed(tr, row);
+  });
+
+  // On blur/commit: re-sort by moving existing row nodes (no recreation).
+  // Deferred via setTimeout so it never reparents a row's DOM node while a
+  // click gesture elsewhere in that row (e.g. a checkbox) is still being
+  // dispatched — reordering mid-click can cause the browser to drop the
+  // click's default action (checkbox toggle) on the moved element.
+  document.getElementById("rows-body").addEventListener("change", (e) => {
+    const result = applyFieldToState(e);
+    if (!result) return;
+    saveState();
+    updateRowComputed(result.tr, result.row);
+    setTimeout(resortRows, 0);
+  });
+
+  document.getElementById("rows-body").addEventListener("click", (e) => {
+    if (e.target.dataset.action === "delete") {
+      const tr = e.target.closest("tr");
+      state.rows = state.rows.filter((r) => r.id !== tr.dataset.id);
+      saveState();
+      renderAll();
+    }
+  });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
