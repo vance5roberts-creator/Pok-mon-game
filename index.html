@@ -1,4 +1,4 @@
-<!-- CATALYST FLOW — Paste this entire block into Porkbun's HTML/Code block -->
+<!-- VANCE ROBERTS — Personal Hub — Paste this entire block into Porkbun's HTML/Code block -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
 
@@ -67,7 +67,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-pain-left p{font-size:1rem;color:#7a6a58;margin-bottom:36px;max-width:460px;line-height:1.8;}
 .cf-pain-list{list-style:none;display:flex;flex-direction:column;gap:18px;}
 .cf-pain-list li{display:flex;align-items:flex-start;gap:16px;font-size:.95rem;color:#8a7a68;}
-.cf-pain-list li .cf-x{color:#c03010;font-size:1.1rem;line-height:1.4;flex-shrink:0;font-weight:700;}
+.cf-pain-list li .cf-x{color:var(--lime);font-size:1.1rem;line-height:1.4;flex-shrink:0;font-weight:700;}
 .cf-terminal{background:var(--bg3);border:1px solid var(--border);border-top:2px solid var(--orange);padding:34px;font-family:'Courier New',monospace;font-size:.84rem;}
 .cf-term-bar{display:flex;gap:8px;margin-bottom:26px;}
 .cf-td{width:10px;height:10px;border-radius:50%;}
@@ -77,7 +77,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-tline{margin-bottom:11px;color:#5a4a38;}
 .cf-tline.ok{color:#6abf69;}
 .cf-tline.warn{color:#e8a030;}
-.cf-tline.err{color:#e05040;}
 .cf-tline .cf-prompt{color:var(--orange);margin-right:8px;}
 .cf-tline .cf-val{color:var(--white);}
 .cf-blink{animation:cf-blink .9s step-end infinite;}
@@ -92,33 +91,23 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity .35s;}
 .cf-card:hover{background:#241e16;}
 .cf-card:hover::after{opacity:1;}
+a.cf-card{display:block;text-decoration:none;color:inherit;}
+.cf-card-soon{opacity:.55;}
+.cf-card-soon:hover{background:var(--surface);}
+.cf-card-soon:hover::after{opacity:0;}
 .cf-card-icon{width:50px;height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:26px;background:rgba(255,92,26,.08);border:1px solid rgba(255,92,26,.18);border-radius:4px;}
 .cf-card-icon svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:1.5;}
 .cf-card:nth-child(2) .cf-card-icon{background:rgba(200,242,48,.06);border-color:rgba(200,242,48,.18);}
 .cf-card:nth-child(2) .cf-card-icon svg{stroke:var(--lime);}
 .cf-card:nth-child(3) .cf-card-icon{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.18);}
 .cf-card:nth-child(3) .cf-card-icon svg{stroke:var(--gold);}
-.cf-card:nth-child(4) .cf-card-icon{background:rgba(200,242,48,.06);border-color:rgba(200,242,48,.18);}
-.cf-card:nth-child(4) .cf-card-icon svg{stroke:var(--lime);}
-.cf-card:nth-child(5) .cf-card-icon{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.18);}
-.cf-card:nth-child(5) .cf-card-icon svg{stroke:var(--gold);}
 .cf-card-num{position:absolute;top:22px;right:24px;font-size:.62rem;letter-spacing:.1em;color:rgba(194,180,154,.15);font-weight:600;}
 .cf-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:14px;}
 .cf-card p{font-size:.9rem;color:#7a6a58;line-height:1.75;}
 .cf-card-tag{display:inline-block;margin-top:22px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--orange);}
 .cf-card:nth-child(2) .cf-card-tag{color:var(--lime);}
 .cf-card:nth-child(3) .cf-card-tag{color:var(--gold);}
-.cf-card:nth-child(4) .cf-card-tag{color:var(--lime);}
-.cf-card:nth-child(5) .cf-card-tag{color:var(--gold);}
-
-#cf-stats{padding:90px 64px;background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-.cf-stats-blob{width:900px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(255,92,26,.06) 0%,transparent 65%);}
-.cf-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:1;}
-.cf-stat{display:flex;flex-direction:column;align-items:center;gap:12px;padding:30px 0;border-right:1px solid var(--border);}
-.cf-stat:last-child{border-right:none;}
-.cf-stat-num{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:400;color:var(--white);line-height:1;}
-.cf-stat-num .cf-hi{background:linear-gradient(90deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.cf-stat-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:#4a3a2a;}
+.cf-card-soon .cf-card-tag{color:#4a3a2a;}
 
 #cf-how{padding:130px 64px;background:var(--bg);}
 .cf-steps{display:flex;flex-direction:column;max-width:820px;margin:0 auto;}
@@ -134,26 +123,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-cta-eye{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--lime);margin-bottom:26px;}
 #cf-cta h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4.5rem);color:var(--white);line-height:1.08;margin-bottom:24px;}
 #cf-cta h2 em{font-style:italic;color:var(--orange);}
-#cf-cta .cf-cta-sub{font-size:1.08rem;color:#7a6a58;max-width:500px;margin:0 auto 56px;line-height:1.8;}
-.cf-cta-form{display:flex;max-width:520px;margin:0 auto 22px;}
-.cf-cta-form input{flex:1;padding:17px 24px;background:rgba(30,18,8,.9);border:1px solid var(--border);border-right:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .25s;}
-.cf-cta-form input::placeholder{color:#4a3a2a;}
-.cf-cta-form input:focus{border-color:var(--orange);}
-.cf-cta-form button{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:17px 32px;background:var(--orange);color:var(--bg);border:none;cursor:pointer;white-space:nowrap;transition:background .25s,box-shadow .25s;}
-.cf-cta-form button:hover{background:#ff7040;box-shadow:var(--glow-o);}
-.cf-disclaimer{font-size:.74rem;color:#3a2a1a;letter-spacing:.06em;}
+#cf-cta .cf-cta-sub{font-size:1.08rem;color:#7a6a58;max-width:500px;margin:0 auto 46px;line-height:1.8;}
+.cf-disclaimer{font-size:.74rem;color:#3a2a1a;letter-spacing:.06em;margin-top:22px;}
 
 #cf-footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
 .cf-footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px;}
 .cf-footer-logo .cf-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;flex-shrink:0;}
 .cf-footer-logo em{font-style:italic;color:var(--orange);}
 #cf-footer p{font-size:.76rem;color:#3a2a1a;letter-spacing:.06em;}
-.cf-footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
-.cf-footer-email{font-size:.82rem;color:var(--orange);text-decoration:none;letter-spacing:.04em;transition:color .2s;}
-.cf-footer-email:hover{color:var(--gold);}
 .cf-footer-links{display:flex;gap:28px;list-style:none;}
-.cf-footer-links a{font-size:.76rem;color:#4a3a2a;text-decoration:none;transition:color .2s;}
-.cf-footer-links a:hover{color:var(--orange);}
+.cf-footer-links a{font-size:.76rem;color:var(--orange);text-decoration:none;transition:color .2s;}
+.cf-footer-links a:hover{color:var(--gold);}
 
 @keyframes cf-fadeup{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 .cf-reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
@@ -162,13 +142,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 @media(max-width:900px){
   #cf-nav{padding:16px 24px;}
   .cf-nav-links{display:none;}
-  #cf-pain,#cf-features,#cf-how,#cf-stats,#cf-cta{padding:80px 24px;}
+  #cf-pain,#cf-features,#cf-how,#cf-cta{padding:80px 24px;}
   .cf-pain-grid{grid-template-columns:1fr;gap:48px;}
   .cf-feat-grid{grid-template-columns:1fr;gap:1px;}
-  .cf-stats-grid{grid-template-columns:repeat(2,1fr);}
-  .cf-stat{border-right:none;border-bottom:1px solid var(--border);}
   #cf-footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
-  .cf-footer-right{align-items:flex-start;}
 }
 </style>
 
@@ -178,131 +155,82 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 <!-- NAV -->
 <nav id="cf-nav">
-  <a class="cf-logo" href="#cf-hero"><span class="cf-dot"></span>Catalyst <em>Flow</em></a>
+  <a class="cf-logo" href="#cf-hero"><span class="cf-dot"></span>Vance <em>Roberts</em></a>
   <ul class="cf-nav-links">
-    <li><a href="#cf-features">Features</a></li>
+    <li><a href="#cf-pain">About</a></li>
+    <li><a href="#cf-features">Links</a></li>
     <li><a href="#cf-how">How It Works</a></li>
-    <li><a href="#cf-stats">Results</a></li>
-    <li><a href="https://vanceroberts.substack.com" target="_blank" rel="noopener">Newsletter</a></li>
   </ul>
-  <a href="#cf-cta" class="cf-nav-cta">Get Early Access</a>
+  <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-nav-cta">Read on Substack</a>
 </nav>
 
 <!-- HERO -->
 <section id="cf-hero">
   <div class="cf-blob cf-hero-blob1"></div>
   <div class="cf-blob cf-hero-blob2"></div>
-  <div class="cf-hero-badge">Next-Gen Marketing Intelligence &mdash; 2025</div>
-  <h1 class="cf-h1">Your Competitors<span class="cf-accent">Already Automated.</span></h1>
-  <p class="cf-hero-sub">Catalyst Flow replaces <strong>outdated email blasts and manual workflows</strong> with a self-learning engine that writes, sends, and optimizes &mdash; 24 hours a day, without you lifting a finger.</p>
+  <div class="cf-hero-badge">Personal Hub</div>
+  <h1 class="cf-h1">This Is My<span class="cf-accent">Home Base.</span></h1>
+  <p class="cf-hero-sub">A single place to find <strong>my writing, projects, and the other corners of the internet</strong> where I show up — starting with my Substack.</p>
   <div class="cf-hero-ctas">
-    <a href="#cf-cta" class="cf-btn-primary">Activate Your System</a>
-    <a href="#cf-features" class="cf-btn-ghost">See How It Works</a>
+    <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
+    <a href="#cf-features" class="cf-btn-ghost">See All Links</a>
   </div>
   <div class="cf-scroll-hint"><div class="cf-scroll-arrow"></div>Scroll to discover</div>
 </section>
 
-<!-- PAIN -->
+<!-- ABOUT -->
 <section id="cf-pain">
   <div class="cf-pain-grid">
     <div class="cf-pain-left cf-reveal">
-      <div class="cf-section-label">The Problem</div>
-      <h2>Still running on <em>2015 tools?</em></h2>
-      <p>Every day you spend with legacy email platforms and disconnected marketing stacks, a competitor with AI automation is pulling your customers away.</p>
+      <div class="cf-section-label">About This Page</div>
+      <h2>Not a <em>pitch.</em> Just a hub.</h2>
+      <p>No sales funnel, no forms, no popups. Just a fast, simple way to find what I'm writing and working on right now.</p>
       <ul class="cf-pain-list">
-        <li><span class="cf-x">&#x2717;</span>Generic batch-and-blast emails nobody opens</li>
-        <li><span class="cf-x">&#x2717;</span>Copy-pasting data between 6 disconnected tools</li>
-        <li><span class="cf-x">&#x2717;</span>Zero personalization at scale</li>
-        <li><span class="cf-x">&#x2717;</span>Reporting that tells you what happened, not what to do next</li>
-        <li><span class="cf-x">&#x2717;</span>Workflows that break every time you add a new team member</li>
+        <li><span class="cf-x">&#x2713;</span>Latest essays and updates from my Substack</li>
+        <li><span class="cf-x">&#x2713;</span>Links to new projects the moment they go live</li>
+        <li><span class="cf-x">&#x2713;</span>One page to bookmark instead of five different links</li>
+        <li><span class="cf-x">&#x2713;</span>No sign-up walls or tracking — just where to find me</li>
       </ul>
     </div>
     <div class="cf-terminal cf-reveal">
       <div class="cf-term-bar"><div class="cf-td"></div><div class="cf-td"></div><div class="cf-td"></div></div>
-      <div class="cf-tline"><span class="cf-prompt">$</span>scan_marketing_stack --audit</div>
-      <div class="cf-tline warn"><span class="cf-prompt">!</span>ESP version: <span class="cf-val">MailChimp 2019 config detected</span></div>
-      <div class="cf-tline err"><span class="cf-prompt">&#x2717;</span>Open rate: <span class="cf-val">11.2% (industry avg: 38.7%)</span></div>
-      <div class="cf-tline err"><span class="cf-prompt">&#x2717;</span>Automation rules: <span class="cf-val">3 active / 0 AI-powered</span></div>
-      <div class="cf-tline err"><span class="cf-prompt">&#x2717;</span>Personalization: <span class="cf-val">NONE DETECTED</span></div>
-      <div class="cf-tline warn"><span class="cf-prompt">!</span>Revenue leakage estimate: <span class="cf-val">$4,200 / mo</span></div>
-      <div class="cf-tline" style="margin-top:16px;"><span class="cf-prompt">$</span>recommend_fix<span class="cf-blink">_</span></div>
-      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span>Deploying Catalyst Flow Engine...</div>
+      <div class="cf-tline"><span class="cf-prompt">$</span>whoami</div>
+      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">Vance Roberts</span></div>
+      <div class="cf-tline"><span class="cf-prompt">$</span>cat now.txt</div>
+      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">Writing on Substack. Building small things on the side.</span></div>
+      <div class="cf-tline"><span class="cf-prompt">$</span>ls links/</div>
+      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">substack/</span></div>
+      <div class="cf-tline warn"><span class="cf-prompt">!</span>more links landing soon</div>
+      <div class="cf-tline" style="margin-top:16px;"><span class="cf-prompt">$</span>echo "thanks for stopping by"<span class="cf-blink">_</span></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- LINKS -->
 <section id="cf-features">
   <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Core Intelligence Modules</div>
-    <h2>One Platform. Total Automation.</h2>
-    <p>Six AI-native engines working in parallel so your funnel never sleeps.</p>
+    <div class="cf-section-label" style="justify-content:center;">Find Me Elsewhere</div>
+    <h2>Where To Look Next.</h2>
+    <p>This list grows as new projects launch. For now, start with the Substack.</p>
   </div>
   <div class="cf-feat-grid">
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">01</span>
+    <a class="cf-card cf-reveal" href="https://vanceroberts.substack.com" target="_blank" rel="noopener">
       <div class="cf-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-      <h3>Hyper-Personalized Email AI</h3>
-      <p>Every message written for the individual &mdash; name, behavior, intent, and timing &mdash; dynamically generated by large language models at scale.</p>
-      <span class="cf-card-tag">Email Intelligence</span>
-    </div>
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">02</span>
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3>Predictive Send Optimization</h3>
-      <p>Our model learns each contact's peak engagement window and auto-schedules delivery &mdash; no A/B tests, no guesswork, just results.</p>
-      <span class="cf-card-tag">Send-Time AI</span>
-    </div>
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">03</span>
+      <h3>Substack</h3>
+      <p>Essays, updates, and whatever's currently on my mind — delivered straight to your inbox.</p>
+      <span class="cf-card-tag">Read on Substack &rarr;</span>
+    </a>
+    <div class="cf-card cf-card-soon cf-reveal">
       <div class="cf-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <h3>Omni-Channel Workflow Engine</h3>
-      <p>Connect email, SMS, social, and CRM into a single synchronized automation graph that adapts in real time to every lead action.</p>
-      <span class="cf-card-tag">Cross-Channel</span>
+      <h3>Project #2</h3>
+      <p>Reserved for whatever's next. Check back soon for a real link.</p>
+      <span class="cf-card-tag">Coming Soon</span>
     </div>
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">04</span>
+    <div class="cf-card cf-card-soon cf-reveal">
       <div class="cf-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-      <h3>Neural Lead Scoring</h3>
-      <p>Stop wasting time on cold contacts. Our scoring model ranks every lead by purchase likelihood, churn risk, and lifetime value &mdash; updated every hour.</p>
-      <span class="cf-card-tag">AI Scoring</span>
-    </div>
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">05</span>
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-      <h3>Live Revenue Dashboard</h3>
-      <p>A single command center showing attribution, campaign ROI, pipeline velocity, and AI-driven recommendations &mdash; all in real time.</p>
-      <span class="cf-card-tag">Analytics</span>
-    </div>
-    <div class="cf-card cf-reveal">
-      <span class="cf-card-num">06</span>
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>Autonomous Campaign Pilot</h3>
-      <p>Set your goal. The AI plans, launches, and optimizes every campaign autonomously &mdash; adjusting copy, segments, and frequency to hit your target.</p>
-      <span class="cf-card-tag">Fully Autonomous</span>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section id="cf-stats">
-  <div class="cf-blob cf-stats-blob"></div>
-  <div class="cf-stats-grid">
-    <div class="cf-stat cf-reveal">
-      <div class="cf-stat-num"><span class="cf-hi cf-count" data-target="387">0</span><span class="cf-hi">%</span></div>
-      <div class="cf-stat-label">Average Email ROI Increase</div>
-    </div>
-    <div class="cf-stat cf-reveal">
-      <div class="cf-stat-num"><span class="cf-hi cf-count" data-target="94">0</span><span class="cf-hi">%</span></div>
-      <div class="cf-stat-label">Reduction in Manual Work</div>
-    </div>
-    <div class="cf-stat cf-reveal">
-      <div class="cf-stat-num"><span class="cf-hi cf-count" data-target="12">0</span><span class="cf-hi">x</span></div>
-      <div class="cf-stat-label">Faster Campaign Launch</div>
-    </div>
-    <div class="cf-stat cf-reveal">
-      <div class="cf-stat-num"><span class="cf-hi">$</span><span class="cf-hi cf-count" data-target="2">0</span><span class="cf-hi">.4M</span></div>
-      <div class="cf-stat-label">Avg Revenue Unlocked / Year</div>
+      <h3>Project #3</h3>
+      <p>Another spot held open for a future site or project.</p>
+      <span class="cf-card-tag">Coming Soon</span>
     </div>
   </div>
 </section>
@@ -310,30 +238,25 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 <!-- HOW IT WORKS -->
 <section id="cf-how">
   <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Deployment Protocol</div>
-    <h2>Live in 48 Hours.</h2>
-    <p>No developers needed. No six-month onboarding. Just connect, configure, and launch.</p>
+    <div class="cf-section-label" style="justify-content:center;">How This Works</div>
+    <h2>Simple By Design.</h2>
+    <p>No accounts, no dashboards — just links that go where they say they'll go.</p>
   </div>
   <div class="cf-steps">
     <div class="cf-step cf-reveal">
       <div class="cf-step-conn"></div>
       <div class="cf-step-num">1</div>
-      <div class="cf-step-body"><h3>Connect Your Stack</h3><p>Link your existing CRM, ESP, and data sources in minutes with 200+ native integrations. Catalyst Flow maps your contacts and historical data automatically.</p></div>
+      <div class="cf-step-body"><h3>Pick A Link</h3><p>Every card above points to something real. Start with Substack if you're not sure where to begin.</p></div>
     </div>
     <div class="cf-step cf-reveal">
       <div class="cf-step-conn"></div>
       <div class="cf-step-num">2</div>
-      <div class="cf-step-body"><h3>Define Your Goals</h3><p>Tell the AI what you are optimizing for &mdash; revenue, retention, engagement, or acquisition. It handles every tactical decision from there.</p></div>
+      <div class="cf-step-body"><h3>It Opens Where It Lives</h3><p>Substack, and eventually other platforms — nothing is hosted here, you land on the real thing.</p></div>
     </div>
     <div class="cf-step cf-reveal">
       <div class="cf-step-conn"></div>
       <div class="cf-step-num">3</div>
-      <div class="cf-step-body"><h3>Launch and Watch It Learn</h3><p>Your first AI-powered campaigns go live. The engine begins learning, scoring, and iterating &mdash; getting smarter with every send.</p></div>
-    </div>
-    <div class="cf-step cf-reveal">
-      <div class="cf-step-conn"></div>
-      <div class="cf-step-num">4</div>
-      <div class="cf-step-body"><h3>Scale Without Limits</h3><p>From 500 contacts to 5 million &mdash; the system scales elastically, maintaining hyper-personalization at every tier.</p></div>
+      <div class="cf-step-body"><h3>Come Back Later</h3><p>This page grows as new projects launch. Bookmark it once, get access to everything after.</p></div>
     </div>
   </div>
 </section>
@@ -341,29 +264,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 <!-- CTA -->
 <section id="cf-cta">
   <div class="cf-blob cf-cta-blob"></div>
-  <div class="cf-cta-eye">Limited Early Access Open Now</div>
-  <h2>Stop <em>Bleeding Revenue</em><br>to Outdated Tools.</h2>
-  <p class="cf-cta-sub">Join forward-thinking businesses already running on Catalyst Flow. Early access includes white-glove onboarding at no cost.</p>
-  <form class="cf-cta-form" id="cf-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="email" name="email" placeholder="Enter your business email..." required />
-    <button type="submit">Request Access</button>
-    <input type="hidden" name="_replyto" value="connect@catalystflow.io" />
-    <input type="hidden" name="_subject" value="New Early Access Request - Catalyst Flow" />
-  </form>
-  <p class="cf-disclaimer">No credit card required &middot; 14-day pilot &middot; Cancel anytime</p>
+  <div class="cf-cta-eye">Start Here</div>
+  <h2>Read The <em>Newsletter.</em></h2>
+  <p class="cf-cta-sub">Everything starts on Substack — essays, updates, and the occasional dispatch.</p>
+  <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Subscribe on Substack</a>
+  <p class="cf-disclaimer">Free forever &middot; No spam &middot; Unsubscribe anytime</p>
 </section>
 
 <!-- FOOTER -->
 <footer id="cf-footer">
-  <a class="cf-footer-logo" href="#cf-hero"><span class="cf-dot"></span>Catalyst <em>Flow</em></a>
-  <p>&copy; 2025 Catalyst Flow Systems &middot; All rights reserved</p>
+  <a class="cf-footer-logo" href="#cf-hero"><span class="cf-dot"></span>Vance <em>Roberts</em></a>
+  <p>&copy; 2026 Vance Roberts</p>
   <div class="cf-footer-right">
-    <a class="cf-footer-email" id="cf-email-link" href="#">connect@catalystflow.io</a>
     <ul class="cf-footer-links">
       <li><a href="https://vanceroberts.substack.com" target="_blank" rel="noopener">Substack</a></li>
-      <li><a href="#">Privacy</a></li>
-      <li><a href="#">Terms</a></li>
-      <li><a href="#">Contact</a></li>
     </ul>
   </div>
 </footer>
@@ -372,10 +286,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 <script>
 (function() {
-
-  /* email link */
-  var el = document.getElementById("cf-email-link");
-  if (el) { el.href = "mailto:connect@catalystflow.io"; }
 
   /* flow field canvas */
   var canvas = document.getElementById("cf-canvas");
@@ -448,70 +358,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   var revealEls = document.querySelectorAll(".cf-reveal");
   for (var i = 0; i < revealEls.length; i++) {
     revealObs.observe(revealEls[i]);
-  }
-
-  /* count up */
-  var countObs = new IntersectionObserver(function(entries) {
-    for (var i = 0; i < entries.length; i++) {
-      var e = entries[i];
-      if (e.isIntersecting) {
-        (function(el) {
-          var target = parseInt(el.getAttribute("data-target"), 10);
-          var cur = 0;
-          var step = target / 55;
-          var iv = setInterval(function() {
-            cur += step;
-            if (cur >= target) {
-              el.textContent = target;
-              clearInterval(iv);
-            } else {
-              el.textContent = Math.floor(cur);
-            }
-          }, 22);
-        })(e.target);
-        countObs.unobserve(e.target);
-      }
-    }
-  }, { threshold: 0.5 });
-
-  var countEls = document.querySelectorAll(".cf-count");
-  for (var i = 0; i < countEls.length; i++) {
-    countObs.observe(countEls[i]);
-  }
-
-  /* form submit */
-  var form = document.getElementById("cf-form");
-  if (form) {
-    var btn = form.querySelector("button");
-    var emailInput = form.querySelector("input[type=email]");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      btn.textContent = "Sending...";
-      btn.style.opacity = "0.7";
-      btn.disabled = true;
-
-      fetch(form.action, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      }).then(function(res) {
-        if (res.ok) {
-          btn.textContent = "Access Granted";
-          btn.style.background = "#6abf50";
-          btn.style.opacity = "1";
-          emailInput.value = "";
-          emailInput.placeholder = "You are on the list!";
-        } else {
-          throw new Error("fail");
-        }
-      }).catch(function() {
-        btn.textContent = "Try Again";
-        btn.style.background = "#e05040";
-        btn.style.opacity = "1";
-        btn.disabled = false;
-      });
-    });
   }
 
 })();
