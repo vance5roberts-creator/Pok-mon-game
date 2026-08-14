@@ -29,6 +29,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-logo{font-family:'DM Serif Display',serif;font-size:1.5rem;letter-spacing:.02em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;}
 .cf-logo .cf-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;box-shadow:var(--glow-o);animation:cf-pulse 2s ease-in-out infinite;flex-shrink:0;}
 .cf-logo em{font-style:italic;color:var(--orange);}
+.cf-nav-left{display:flex;align-items:center;gap:16px;}
+.cf-nav-handle{font-size:.78rem;color:#7a6a58;text-decoration:none;letter-spacing:.03em;transition:color .2s;}
+.cf-nav-handle:hover{color:var(--lime);}
 .cf-nav-links{display:flex;gap:40px;list-style:none;}
 .cf-nav-links a{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:#7a6a58;text-decoration:none;transition:color .25s;}
 .cf-nav-links a:hover{color:var(--white);}
@@ -86,7 +89,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-sec-head{text-align:center;margin-bottom:74px;}
 .cf-sec-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:16px;}
 .cf-sec-head p{font-size:1rem;color:#7a6a58;max-width:540px;margin:0 auto;line-height:1.8;}
-.cf-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1180px;margin:0 auto;background:var(--border);}
+.cf-feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1180px;margin:0 auto;background:var(--border);}
 .cf-card{background:var(--surface);padding:44px 38px;position:relative;overflow:hidden;transition:background .3s;}
 .cf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity .35s;}
 .cf-card:hover{background:#241e16;}
@@ -155,7 +158,10 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
 
 <!-- NAV -->
 <nav id="cf-nav">
-  <a class="cf-logo" href="#cf-hero"><span class="cf-dot"></span>Vance <em>Roberts</em></a>
+  <div class="cf-nav-left">
+    <a class="cf-logo" href="#cf-hero"><span class="cf-dot"></span>Vance <em>Roberts</em></a>
+    <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-nav-handle">@Vance_Roberts5</a>
+  </div>
   <!-- Other nav links (About / Links / How It Works) removed for now — add back later -->
   <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-nav-cta">Read on Substack</a>
 </nav>
@@ -171,6 +177,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
     <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-btn-ghost">Watch on YouTube</a>
     <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-btn-ghost">Shop Tatted Trading</a>
+    <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-btn-ghost">Follow on X</a>
     <a href="#cf-features" class="cf-btn-ghost">See All Links</a>
   </div>
   <div class="cf-scroll-hint"><div class="cf-scroll-arrow"></div>Scroll to discover</div>
@@ -187,6 +194,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
         <li><span class="cf-x">&#x2713;</span>Latest essays and updates from my Substack</li>
         <li><span class="cf-x">&#x2713;</span>New videos the moment they're up on YouTube</li>
         <li><span class="cf-x">&#x2713;</span>Stock market gear over at Tatted Trading</li>
+        <li><span class="cf-x">&#x2713;</span>Quick thoughts and updates over on X</li>
         <li><span class="cf-x">&#x2713;</span>Links to new projects the moment they go live</li>
         <li><span class="cf-x">&#x2713;</span>One page to bookmark instead of five different links</li>
         <li><span class="cf-x">&#x2713;</span>No sign-up walls or tracking — just where to find me</li>
@@ -197,9 +205,9 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
       <div class="cf-tline"><span class="cf-prompt">$</span>whoami</div>
       <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">Vance Roberts</span></div>
       <div class="cf-tline"><span class="cf-prompt">$</span>cat now.txt</div>
-      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">Writing on Substack. Posting videos on YouTube. Selling trading gear at Tatted Trading.</span></div>
+      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">Writing on Substack. Posting videos on YouTube. Selling trading gear at Tatted Trading. Also on X.</span></div>
       <div class="cf-tline"><span class="cf-prompt">$</span>ls links/</div>
-      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">substack/  youtube/  tattedtrading/</span></div>
+      <div class="cf-tline ok"><span class="cf-prompt">&#x2192;</span><span class="cf-val">substack/  youtube/  tattedtrading/  x/</span></div>
       <div class="cf-tline" style="margin-top:16px;"><span class="cf-prompt">$</span>echo "thanks for stopping by"<span class="cf-blink">_</span></div>
     </div>
   </div>
@@ -231,6 +239,12 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
       <p>Stock market gear and merch for traders who show their work.</p>
       <span class="cf-card-tag">Shop Tatted Trading &rarr;</span>
     </a>
+    <a class="cf-card cf-reveal" href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener">
+      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></div>
+      <h3>X</h3>
+      <p>Quick thoughts, trading takes, and whatever's happening in real time.</p>
+      <span class="cf-card-tag">Follow on X &rarr;</span>
+    </a>
   </div>
 </section>
 
@@ -250,7 +264,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     <div class="cf-step cf-reveal">
       <div class="cf-step-conn"></div>
       <div class="cf-step-num">2</div>
-      <div class="cf-step-body"><h3>It Opens Where It Lives</h3><p>Substack, YouTube, Tatted Trading, and eventually other platforms — nothing is hosted here, you land on the real thing.</p></div>
+      <div class="cf-step-body"><h3>It Opens Where It Lives</h3><p>Substack, YouTube, Tatted Trading, X, and eventually other platforms — nothing is hosted here, you land on the real thing.</p></div>
     </div>
     <div class="cf-step cf-reveal">
       <div class="cf-step-conn"></div>
@@ -279,6 +293,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
       <li><a href="https://vanceroberts.substack.com" target="_blank" rel="noopener">Substack</a></li>
       <li><a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener">YouTube</a></li>
       <li><a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener">Tatted Trading</a></li>
+      <li><a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener">X</a></li>
     </ul>
   </div>
 </footer>
