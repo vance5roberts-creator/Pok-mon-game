@@ -53,7 +53,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-h1 .cf-accent{display:block;font-style:italic;background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .cf-hero-sub{max-width:580px;font-size:1.1rem;font-weight:300;color:#8a7a68;margin-bottom:54px;animation:cf-fadeup 1s .2s ease both;line-height:1.75;}
 .cf-hero-sub strong{color:var(--white);font-weight:500;}
-.cf-hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:cf-fadeup 1s .3s ease both;}
+.cf-hero-ctas{display:flex;flex-direction:column;align-items:center;gap:16px;animation:cf-fadeup 1s .3s ease both;}
+.cf-hero-cta-row{display:flex;align-items:center;gap:12px;}
+.cf-icon-btn{width:54px;height:54px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(245,237,226,.15);text-decoration:none;cursor:pointer;transition:border-color .25s,background .25s;}
+.cf-icon-btn svg{width:22px;height:22px;stroke:var(--white);fill:none;stroke-width:1.5;transition:stroke .25s;}
+.cf-icon-btn:hover{border-color:var(--orange);background:rgba(255,92,26,.08);}
+.cf-icon-btn:hover svg{stroke:var(--orange);}
 .cf-btn-primary{font-size:.82rem;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:17px 44px;background:linear-gradient(135deg,var(--orange),#e04010);color:var(--white);border:none;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s;display:inline-block;}
 .cf-btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,92,26,.45);}
 .cf-btn-ghost{font-size:.82rem;letter-spacing:.1em;font-weight:500;text-transform:uppercase;padding:17px 44px;background:transparent;color:var(--white);border:1px solid rgba(245,237,226,.15);cursor:pointer;text-decoration:none;transition:border-color .25s,color .25s;display:inline-block;}
@@ -174,9 +179,18 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   <h1 class="cf-h1">One Link.<span class="cf-accent">Everything I Make.</span></h1>
   <p class="cf-hero-sub"><strong>Essays on Substack, videos on YouTube</strong>, and whatever comes next — all linked from right here, updated as it happens.</p>
   <div class="cf-hero-ctas">
-    <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
-    <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-btn-primary">Watch on YouTube</a>
-    <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-btn-primary">Follow on X</a>
+    <div class="cf-hero-cta-row">
+      <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
+      <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="Substack"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+    </div>
+    <div class="cf-hero-cta-row">
+      <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-btn-primary">Watch on YouTube</a>
+      <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="YouTube"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></a>
+    </div>
+    <div class="cf-hero-cta-row">
+      <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-btn-primary">Follow on X</a>
+      <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="X"><svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
+    </div>
     <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-btn-primary">Shop Tatted Trading</a>
   </div>
   <div class="cf-scroll-hint"><div class="cf-scroll-arrow"></div>Scroll to discover</div>
