@@ -35,8 +35,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-nav-links{display:flex;gap:40px;list-style:none;}
 .cf-nav-links a{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:#7a6a58;text-decoration:none;transition:color .25s;}
 .cf-nav-links a:hover{color:var(--white);}
-.cf-nav-cta{font-size:1rem;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 44px;background:var(--orange);color:var(--bg);text-decoration:none;cursor:pointer;transition:background .25s,box-shadow .3s;border:none;display:inline-block;}
+.cf-nav-cta{font-size:.82rem;letter-spacing:.08em;font-weight:600;text-transform:uppercase;padding:13px 26px;background:var(--orange);color:var(--bg);text-decoration:none;cursor:pointer;transition:background .25s,box-shadow .3s;border:none;display:inline-block;white-space:nowrap;}
 .cf-nav-cta:hover{background:#ff7040;box-shadow:var(--glow-o);}
+.cf-nav-actions{display:flex;align-items:center;gap:10px;}
+.cf-nav-btn{font-size:.72rem;letter-spacing:.06em;font-weight:600;text-transform:uppercase;padding:12px 20px;border:1px solid rgba(245,237,226,.18);color:var(--white);text-decoration:none;transition:border-color .2s,color .2s,background .2s;white-space:nowrap;}
+.cf-nav-btn:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,92,26,.08);}
 
 #cf-wrap section{position:relative;z-index:1;}
 .cf-section-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--lime);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
@@ -53,16 +56,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-h1 .cf-accent{display:block;font-style:italic;background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .cf-hero-sub{max-width:580px;font-size:1.1rem;font-weight:300;color:#8a7a68;margin-bottom:54px;animation:cf-fadeup 1s .2s ease both;line-height:1.75;}
 .cf-hero-sub strong{color:var(--white);font-weight:500;}
-.cf-hero-ctas{display:flex;flex-direction:column;align-items:center;gap:16px;animation:cf-fadeup 1s .3s ease both;}
-.cf-hero-cta-row{display:flex;align-items:center;gap:12px;}
-.cf-icon-btn{width:54px;height:54px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(245,237,226,.15);text-decoration:none;cursor:pointer;transition:border-color .25s,background .25s;}
-.cf-icon-btn svg{width:22px;height:22px;stroke:var(--white);fill:none;stroke-width:1.5;transition:stroke .25s;}
-.cf-icon-btn:hover{border-color:var(--orange);background:rgba(255,92,26,.08);}
-.cf-icon-btn:hover svg{stroke:var(--orange);}
+.cf-hero-bio{max-width:640px;font-size:1.05rem;font-weight:300;color:#8a7a68;margin-bottom:20px;animation:cf-fadeup 1s .25s ease both;line-height:1.85;}
 .cf-btn-primary{font-size:.82rem;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:17px 44px;background:linear-gradient(135deg,var(--orange),#e04010);color:var(--white);border:none;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s;display:inline-block;}
 .cf-btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,92,26,.45);}
-.cf-btn-ghost{font-size:.82rem;letter-spacing:.1em;font-weight:500;text-transform:uppercase;padding:17px 44px;background:transparent;color:var(--white);border:1px solid rgba(245,237,226,.15);cursor:pointer;text-decoration:none;transition:border-color .25s,color .25s;display:inline-block;}
-.cf-btn-ghost:hover{border-color:var(--lime);color:var(--lime);}
 .cf-scroll-hint{margin-top:80px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(194,180,154,.25);animation:cf-fadeup 1s .6s ease both;}
 .cf-scroll-arrow{width:22px;height:32px;border:1px solid rgba(255,92,26,.25);border-radius:11px;position:relative;}
 .cf-scroll-arrow::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:9px;background:var(--orange);border-radius:2px;animation:cf-scrolldot 1.6s ease-in-out infinite;}
@@ -150,6 +146,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
 @media(max-width:900px){
   #cf-nav{padding:16px 24px;}
   .cf-nav-links{display:none;}
+  .cf-nav-btn{display:none;}
   #cf-pain,#cf-features,#cf-how,#cf-cta{padding:80px 24px;}
   .cf-pain-grid{grid-template-columns:1fr;gap:48px;}
   .cf-feat-grid{grid-template-columns:1fr;gap:1px;}
@@ -167,8 +164,12 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     <a class="cf-logo" href="#cf-hero"><span class="cf-dot"></span>Vance <em>Roberts</em></a>
     <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-nav-handle">@Vance_Roberts5</a>
   </div>
-  <!-- Other nav links (About / Links / How It Works) removed for now — add back later -->
-  <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-nav-cta">Read on Substack</a>
+  <div class="cf-nav-actions">
+    <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-nav-btn">YouTube</a>
+    <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-nav-btn">X</a>
+    <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-nav-btn">Tatted Trading</a>
+    <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-nav-cta">Read on Substack</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -178,21 +179,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   <div class="cf-hero-badge">Personal Hub</div>
   <h1 class="cf-h1">One Link.<span class="cf-accent">Everything I Make.</span></h1>
   <p class="cf-hero-sub"><strong>Essays on Substack, videos on YouTube</strong>, and whatever comes next — all linked from right here, updated as it happens.</p>
-  <div class="cf-hero-ctas">
-    <div class="cf-hero-cta-row">
-      <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
-      <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="Substack"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
-    </div>
-    <div class="cf-hero-cta-row">
-      <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-btn-primary">Watch on YouTube</a>
-      <a href="https://www.youtube.com/@VanceRoberts-dh3mp" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="YouTube"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></a>
-    </div>
-    <div class="cf-hero-cta-row">
-      <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-btn-primary">Follow on X</a>
-      <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-icon-btn" aria-label="X"><svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
-    </div>
-    <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-btn-primary">Shop Tatted Trading</a>
-  </div>
+  <p class="cf-hero-bio">I'm 33, a father of three boys, and married for almost six years. By day I work auto assembly on the line — every other hour goes to the markets, which is what Tatted Trading and most of what I write and talk about is built around.</p>
   <div class="cf-scroll-hint"><div class="cf-scroll-arrow"></div>Scroll to discover</div>
 </section>
 
