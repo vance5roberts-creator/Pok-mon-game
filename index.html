@@ -93,25 +93,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-perf-stat-val{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--lime);}
 .cf-perf-chart-wrap{width:100%;min-width:0;position:relative;height:300px;}
 
-#cf-partners{padding:130px 64px;background:var(--bg2);}
-.cf-feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;max-width:1180px;margin:0 auto;background:var(--border);justify-content:center;}
-.cf-card{background:var(--surface);padding:44px 38px;position:relative;overflow:hidden;transition:background .3s;}
-.cf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity .35s;}
-.cf-card:hover{background:#241e16;}
-.cf-card:hover::after{opacity:1;}
-a.cf-card{display:block;text-decoration:none;color:inherit;}
-.cf-card-icon{width:50px;height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:26px;background:rgba(255,92,26,.08);border:1px solid rgba(255,92,26,.18);border-radius:4px;}
-.cf-card-icon svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:1.5;}
-.cf-card:nth-child(2) .cf-card-icon{background:rgba(200,242,48,.06);border-color:rgba(200,242,48,.18);}
-.cf-card:nth-child(2) .cf-card-icon svg{stroke:var(--lime);}
-.cf-card:nth-child(3) .cf-card-icon{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.18);}
-.cf-card:nth-child(3) .cf-card-icon svg{stroke:var(--gold);}
-.cf-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:14px;}
-.cf-card p{font-size:.9rem;color:#7a6a58;line-height:1.75;}
-.cf-card-tag{display:inline-block;margin-top:22px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--orange);}
-.cf-card:nth-child(2) .cf-card-tag{color:var(--lime);}
-.cf-card:nth-child(3) .cf-card-tag{color:var(--gold);}
-
 /* SHOP — Tatted Trading */
 #cf-shop{padding:130px 64px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg) 0%,var(--bg3) 100%);}
 .cf-shop-blob{width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(200,242,48,.06) 0%,transparent 65%);}
@@ -131,9 +112,13 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
 .cf-shop-item-price{font-size:.82rem;color:var(--lime);font-weight:600;letter-spacing:.03em;}
 
 #cf-collabs{padding:130px 64px;background:var(--bg2);}
-.cf-collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;max-width:1000px;margin:0 auto;}
+.cf-collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;max-width:1180px;margin:0 auto;justify-content:center;}
 .cf-collab-card{background:var(--surface);border:1px solid var(--border);overflow:hidden;transition:border-color .25s ease;}
+a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
 .cf-collab-card:hover{border-color:var(--orange);}
+.cf-collab-card--lime:hover{border-color:var(--lime);}
+.cf-collab-card--gold:hover{border-color:var(--gold);}
+.cf-collab-card--neutral:hover{border-color:rgba(245,237,226,.55);}
 .cf-collab-img{aspect-ratio:16/9;overflow:hidden;background:#0a0806;}
 .cf-collab-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .cf-collab-img svg{width:100%;height:100%;display:block;}
@@ -142,13 +127,14 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
 .cf-collab-by{font-size:.88rem;color:#7a6a58;margin-bottom:20px;}
 .cf-collab-by em{font-style:italic;color:var(--orange);}
 .cf-collab-links{display:flex;flex-wrap:wrap;gap:10px;}
-.cf-collab-links a{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(245,237,226,.15);text-decoration:none;transition:border-color .25s,background .25s;}
-.cf-collab-links a svg{width:15px;height:15px;stroke:var(--white);fill:none;stroke-width:1.5;flex-shrink:0;}
+.cf-collab-links a,.cf-collab-links>span{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(245,237,226,.15);text-decoration:none;transition:border-color .25s,background .25s;}
+.cf-collab-links a svg,.cf-collab-links>span svg{width:15px;height:15px;stroke:var(--white);fill:none;stroke-width:1.5;flex-shrink:0;}
 .cf-collab-links a .cf-collab-xicon{font-size:.95rem;color:var(--white);line-height:1;}
-.cf-collab-links a span:last-child{font-size:.8rem;letter-spacing:.03em;color:var(--white);}
+.cf-collab-links a span:last-child,.cf-collab-links>span span:last-child{font-size:.8rem;letter-spacing:.03em;color:var(--white);}
 .cf-collab-links a:hover{border-color:var(--blue);background:rgba(58,160,255,.08);}
-.cf-collab-card:first-child .cf-collab-links a:hover{border-color:var(--lime);background:rgba(200,242,48,.08);}
-.cf-collab-card:nth-child(3) .cf-collab-links a:hover{border-color:rgba(245,237,226,.55);background:rgba(245,237,226,.08);}
+.cf-collab-card--lime .cf-collab-links a:hover{border-color:var(--lime);background:rgba(200,242,48,.08);}
+.cf-collab-card--gold .cf-collab-links a:hover{border-color:var(--gold);background:rgba(245,200,66,.08);}
+.cf-collab-card--neutral .cf-collab-links a:hover{border-color:rgba(245,237,226,.55);background:rgba(245,237,226,.08);}
 
 #cf-cta{padding:130px 64px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#150e08 0%,#1e1208 50%,#0e0b09 100%);}
 .cf-cta-blob{width:900px;height:900px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,92,26,.08) 0%,transparent 65%);}
@@ -175,8 +161,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   #cf-nav{padding:16px 20px;}
   .cf-nav-social{gap:18px;}
   .cf-nav-slink span{display:none;}
-  #cf-partners,#cf-cta,#cf-shop,#cf-collabs,#cf-about,#cf-performance{padding:80px 24px;}
-  .cf-feat-grid{grid-template-columns:1fr;gap:1px;}
+  #cf-cta,#cf-shop,#cf-collabs,#cf-about,#cf-performance{padding:80px 24px;}
   #cf-footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
   .cf-shop-grid{grid-template-columns:1fr;max-width:220px;}
   .cf-perf-grid{grid-template-columns:1fr;}
@@ -286,35 +271,6 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   </div>
 </section>
 
-<!-- PARTNERS -->
-<section id="cf-partners">
-  <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Partners</div>
-    <h2>Tools I Trust.</h2>
-    <p>Sites and tools I personally use and partner with — more will be added here over time.</p>
-  </div>
-  <div class="cf-feat-grid">
-    <a class="cf-card cf-reveal" href="https://www.dividendvision.com/?via=VtheCreatoR" target="_blank" rel="noopener">
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-      <h3>Dividend Vision</h3>
-      <p>A suite of dividend investing tools — screening, tracking, and research built for income-focused investors.</p>
-      <span class="cf-card-tag">Explore Dividend Vision &rarr;</span>
-    </a>
-    <a class="cf-card cf-reveal" href="https://tradetracs.com/" target="_blank" rel="noopener">
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg></div>
-      <h3>TradeTracs</h3>
-      <p>Investing and scanning tools for tracking setups and cutting through the noise.</p>
-      <span class="cf-card-tag">Explore TradeTracs &rarr;</span>
-    </a>
-    <a class="cf-card cf-reveal" href="https://stockoscope.com/" target="_blank" rel="noopener">
-      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-      <h3>Stockoscope</h3>
-      <p>Side-by-side stock comparison tools for sizing up opportunities at a glance.</p>
-      <span class="cf-card-tag">Explore Stockoscope &rarr;</span>
-    </a>
-  </div>
-</section>
-
 <!-- SHOP -->
 <section id="cf-shop">
   <div class="cf-blob cf-shop-blob"></div>
@@ -340,15 +296,77 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-btn-primary">Shop Tatted Trading</a>
 </section>
 
-<!-- COLLABORATIONS -->
+<!-- PARTNERS & COLLABORATIONS -->
 <section id="cf-collabs">
   <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Collaborations</div>
-    <h2>Built With Others.</h2>
-    <p>Work made alongside people who add something I can't do alone.</p>
+    <div class="cf-section-label" style="justify-content:center;">Partners &amp; Collaborations</div>
+    <h2>People And Tools I Trust.</h2>
+    <p>Sites I use myself, and people I've worked with directly — click through and see for yourself.</p>
   </div>
   <div class="cf-collab-grid">
-    <div class="cf-collab-card cf-reveal">
+    <a class="cf-collab-card cf-reveal" href="https://www.dividendvision.com/?via=VtheCreatoR" target="_blank" rel="noopener">
+      <div class="cf-collab-img">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dividend Vision">
+          <defs>
+            <radialGradient id="dvGlow" cx="50%" cy="35%" r="75%">
+              <stop offset="0%" stop-color="#2a1510"/>
+              <stop offset="100%" stop-color="#1a1410"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="225" fill="url(#dvGlow)"/>
+          <g opacity="0.3" stroke="#ff5c1a" stroke-width="0.5">
+            <line x1="0" y1="56" x2="400" y2="56"/>
+            <line x1="0" y1="112" x2="400" y2="112"/>
+            <line x1="0" y1="168" x2="400" y2="168"/>
+          </g>
+          <g stroke="#ff5c1a" stroke-width="2" fill="none" stroke-linejoin="round">
+            <path d="M158 88 C172 68 228 68 242 88 C228 108 172 108 158 88 Z"/>
+            <circle cx="200" cy="88" r="10" fill="#ff5c1a" stroke="none" opacity="0.9"/>
+          </g>
+          <text x="200" y="160" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="27" fill="#f5ede2">Dividend Vision</text>
+          <text x="200" y="182" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10.5" letter-spacing="3" fill="#ff5c1a" opacity="0.8">INCOME-FOCUSED RESEARCH</text>
+        </svg>
+      </div>
+      <div class="cf-collab-info">
+        <h3>Dividend Vision</h3>
+        <p class="cf-collab-by">Screening, tracking, and research built for income-focused investors.</p>
+        <div class="cf-collab-links">
+          <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>dividendvision.com</span></span>
+        </div>
+      </div>
+    </a>
+    <a class="cf-collab-card cf-collab-card--lime cf-reveal" href="https://tradetracs.com/" target="_blank" rel="noopener">
+      <div class="cf-collab-img">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TradeTracs">
+          <defs>
+            <radialGradient id="ttGlow" cx="50%" cy="35%" r="75%">
+              <stop offset="0%" stop-color="#1c2410"/>
+              <stop offset="100%" stop-color="#1a1410"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="225" fill="url(#ttGlow)"/>
+          <g opacity="0.3" stroke="#c8f230" stroke-width="0.5">
+            <line x1="0" y1="56" x2="400" y2="56"/>
+            <line x1="0" y1="112" x2="400" y2="112"/>
+            <line x1="0" y1="168" x2="400" y2="168"/>
+          </g>
+          <g stroke="#c8f230" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="160,108 178,90 192,100 224,64"/>
+            <polyline points="206,64 224,64 224,82"/>
+          </g>
+          <text x="200" y="160" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="27" fill="#f5ede2">TradeTracs</text>
+          <text x="200" y="182" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10.5" letter-spacing="3" fill="#c8f230" opacity="0.8">SETUP SCANNING &amp; TRACKING</text>
+        </svg>
+      </div>
+      <div class="cf-collab-info">
+        <h3>TradeTracs</h3>
+        <p class="cf-collab-by">Investing and scanning tools for tracking setups and cutting through the noise.</p>
+        <div class="cf-collab-links">
+          <span><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg><span>tradetracs.com</span></span>
+        </div>
+      </div>
+    </a>
+    <div class="cf-collab-card cf-collab-card--gold cf-reveal">
       <div class="cf-collab-img"><img src="https://img-v2-prod.whop.com/unsafe/rs:fit:800:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fpublic%2Fuploads%2Fuser_37594617%2Fimage%2Faccess_passes%2F2026-09-08%2F7fc2cc63-f3bd-46ad-a64e-98ed52bac8ca.jpeg@avif?w=800&q=75" alt="Finding the next multi-bagger small cap." loading="lazy"></div>
       <div class="cf-collab-info">
         <h3>Finding the next multi-bagger small cap.</h3>
@@ -382,7 +400,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
         </div>
       </div>
     </div>
-    <div class="cf-collab-card cf-reveal">
+    <div class="cf-collab-card cf-collab-card--neutral cf-reveal">
       <div class="cf-collab-img cf-tsk-banner">
         <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TheStocksKing">
           <defs>
