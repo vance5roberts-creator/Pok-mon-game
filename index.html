@@ -59,11 +59,38 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 @keyframes cf-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
 .cf-h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(3rem,8vw,6.8rem);line-height:1.02;color:var(--white);margin-bottom:30px;animation:cf-fadeup .9s .1s ease both;max-width:900px;}
 .cf-h1 .cf-accent{display:block;font-style:italic;background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.cf-hero-sub{max-width:580px;font-size:1.1rem;font-weight:300;color:#8a7a68;margin-bottom:46px;animation:cf-fadeup 1s .2s ease both;line-height:1.75;}
+.cf-hero-sub{max-width:580px;font-size:1.1rem;font-weight:300;color:#8a7a68;margin-bottom:54px;animation:cf-fadeup 1s .2s ease both;line-height:1.75;}
 .cf-hero-sub strong{color:var(--white);font-weight:500;}
-.cf-hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:cf-fadeup 1s .3s ease both;}
+.cf-hero-flex{display:flex;align-items:stretch;justify-content:center;gap:32px;max-width:1180px;width:100%;flex-wrap:wrap;}
+.cf-hero-bio-text{flex:1 1 440px;max-width:520px;text-align:left;animation:cf-fadeup 1s .2s ease both;}
+.cf-hero-bio-text p{font-size:1.12rem;font-weight:300;line-height:1.9;margin-bottom:28px;color:#b3a58d;}
+.cf-hero-bio-text p:last-child{margin-bottom:0;}
+.cf-hero-chart-card{width:100%;background:var(--surface);border:1px solid var(--border);padding:28px 28px;text-align:left;animation:cf-fadeup 1s .3s ease both;margin-top:auto;}
+.cf-hero-chart-card h3{font-family:'DM Serif Display',serif;font-size:1.05rem;font-weight:400;color:var(--white);margin-bottom:4px;}
+.cf-hero-chart-card .cf-hcc-sub{font-size:.78rem;color:#7a6a58;margin-bottom:16px;}
+.cf-hero-chart-legend{display:flex;flex-wrap:wrap;gap:9px 16px;margin-bottom:16px;font-size:.74rem;color:var(--text);}
+.cf-hero-chart-legend span{display:flex;align-items:center;gap:5px;}
+.cf-hero-chart-legend i{width:8px;height:8px;border-radius:2px;display:inline-block;flex-shrink:0;}
+.cf-hero-chart-legend b{color:var(--white);font-weight:600;margin-left:1px;}
+.cf-hcc-blended{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.cf-hcc-blended .cf-hcc-blended-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a6a58;}
+.cf-hero-vision{max-width:760px;text-align:center;margin-bottom:44px;padding-bottom:36px;border-bottom:1px solid var(--border);animation:cf-fadeup .9s ease both;}
+.cf-hero-vision p{font-size:1.08rem;font-weight:300;color:var(--text);line-height:1.85;margin-bottom:18px;}
+.cf-hero-vision p:last-child{margin-bottom:0;}
+.cf-hero-intro{max-width:720px;text-align:center;margin-bottom:56px;animation:cf-fadeup 1s .15s ease both;}
+.cf-hero-intro-h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.08;color:var(--white);margin-bottom:20px;}
+.cf-hero-intro-h1 em{font-style:italic;background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cf-hero-intro p{font-size:1.05rem;font-weight:300;color:#8a7a68;line-height:1.75;}
+.cf-hero-chart-block{flex:1 1 460px;max-width:560px;width:100%;display:flex;flex-direction:column;}
+.cf-chart-heading{text-align:left;margin-bottom:22px;}
+.cf-chart-heading .cf-section-label{justify-content:flex-start;}
+.cf-chart-heading h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--white);margin-bottom:10px;}
+.cf-chart-heading p{font-size:.92rem;color:#7a6a58;line-height:1.65;max-width:480px;}
+.cf-hcc-chart-wrap{width:100%;min-width:0;position:relative;height:300px;}
 .cf-btn-primary{font-size:.82rem;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:17px 44px;background:linear-gradient(135deg,var(--orange),#e04010);color:var(--white);border:none;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s;display:inline-block;}
 .cf-btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,92,26,.45);}
+.cf-btn-primary.cf-btn-blue{background:linear-gradient(135deg,var(--blue),#1a6fd9);}
+.cf-btn-primary.cf-btn-blue:hover{box-shadow:0 12px 40px rgba(58,160,255,.45);}
 .cf-btn-ghost{font-size:.82rem;letter-spacing:.1em;font-weight:500;text-transform:uppercase;padding:17px 44px;background:transparent;color:var(--white);border:1px solid rgba(245,237,226,.15);cursor:pointer;text-decoration:none;transition:border-color .25s,color .25s;display:inline-block;}
 .cf-btn-ghost:hover{border-color:var(--lime);color:var(--lime);}
 .cf-scroll-hint{margin-top:80px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(194,180,154,.25);animation:cf-fadeup 1s .6s ease both;}
@@ -71,11 +98,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-scroll-arrow::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:9px;background:var(--orange);border-radius:2px;animation:cf-scrolldot 1.6s ease-in-out infinite;}
 @keyframes cf-scrolldot{0%,100%{top:6px;opacity:1;}80%{top:18px;opacity:0;}}
 
-.cf-sec-head{text-align:center;margin-bottom:74px;}
-.cf-sec-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:16px;}
-.cf-sec-head p{font-size:1rem;color:#7a6a58;max-width:540px;margin:0 auto;line-height:1.8;}
-
-#cf-about{padding:130px 64px;background:var(--bg2);}
+#cf-about{padding:110px 64px;background:var(--bg2);}
 .cf-about-flex{display:flex;align-items:center;justify-content:center;gap:48px;max-width:1000px;margin:0 auto;flex-wrap:wrap;}
 .cf-about-photo{flex:0 0 auto;width:140px;height:140px;border-radius:6px;overflow:hidden;border:1px solid var(--border);background:var(--surface);}
 .cf-about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -83,15 +106,27 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-about-text p{font-size:1.05rem;font-weight:300;line-height:1.85;margin-bottom:22px;color:#b3a58d;}
 .cf-about-text p:last-child{margin-bottom:0;}
 
-#cf-performance{padding:130px 64px;background:var(--bg);}
-.cf-perf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:32px;max-width:1180px;margin:0 auto;}
-.cf-perf-card{background:var(--surface);border:1px solid var(--border);padding:36px 34px;text-align:left;}
-.cf-perf-card h3{font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:400;color:var(--white);margin:8px 0 10px;}
-.cf-perf-sub{font-size:.88rem;color:#7a6a58;line-height:1.7;margin-bottom:22px;max-width:460px;}
-.cf-perf-stat{display:flex;align-items:baseline;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border);}
-.cf-perf-stat-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a6a58;}
-.cf-perf-stat-val{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--lime);}
-.cf-perf-chart-wrap{width:100%;min-width:0;position:relative;height:300px;}
+#cf-partners{padding:130px 64px;background:var(--bg2);}
+.cf-sec-head{text-align:center;margin-bottom:74px;}
+.cf-sec-head h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:16px;}
+.cf-sec-head p{font-size:1rem;color:#7a6a58;max-width:540px;margin:0 auto;line-height:1.8;}
+.cf-feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;max-width:1180px;margin:0 auto;background:var(--border);justify-content:center;}
+.cf-card{background:var(--surface);padding:44px 38px;position:relative;overflow:hidden;transition:background .3s;}
+.cf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity .35s;}
+.cf-card:hover{background:#241e16;}
+.cf-card:hover::after{opacity:1;}
+a.cf-card{display:block;text-decoration:none;color:inherit;}
+.cf-card-icon{width:50px;height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:26px;background:rgba(255,92,26,.08);border:1px solid rgba(255,92,26,.18);border-radius:4px;}
+.cf-card-icon svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:1.5;}
+.cf-card:nth-child(2) .cf-card-icon{background:rgba(200,242,48,.06);border-color:rgba(200,242,48,.18);}
+.cf-card:nth-child(2) .cf-card-icon svg{stroke:var(--lime);}
+.cf-card:nth-child(3) .cf-card-icon{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.18);}
+.cf-card:nth-child(3) .cf-card-icon svg{stroke:var(--gold);}
+.cf-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:14px;}
+.cf-card p{font-size:.9rem;color:#7a6a58;line-height:1.75;}
+.cf-card-tag{display:inline-block;margin-top:22px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--orange);}
+.cf-card:nth-child(2) .cf-card-tag{color:var(--lime);}
+.cf-card:nth-child(3) .cf-card-tag{color:var(--gold);}
 
 /* SHOP — Tatted Trading */
 #cf-shop{padding:130px 64px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg) 0%,var(--bg3) 100%);}
@@ -112,13 +147,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-shop-item-price{font-size:.82rem;color:var(--lime);font-weight:600;letter-spacing:.03em;}
 
 #cf-collabs{padding:130px 64px;background:var(--bg2);}
-.cf-collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;max-width:1180px;margin:0 auto;justify-content:center;}
+.cf-collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;max-width:1000px;margin:0 auto;}
 .cf-collab-card{background:var(--surface);border:1px solid var(--border);overflow:hidden;transition:border-color .25s ease;}
-a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
 .cf-collab-card:hover{border-color:var(--orange);}
-.cf-collab-card--lime:hover{border-color:var(--lime);}
-.cf-collab-card--gold:hover{border-color:var(--gold);}
-.cf-collab-card--neutral:hover{border-color:rgba(245,237,226,.55);}
 .cf-collab-img{aspect-ratio:16/9;overflow:hidden;background:#0a0806;}
 .cf-collab-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .cf-collab-img svg{width:100%;height:100%;display:block;}
@@ -127,14 +158,13 @@ a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
 .cf-collab-by{font-size:.88rem;color:#7a6a58;margin-bottom:20px;}
 .cf-collab-by em{font-style:italic;color:var(--orange);}
 .cf-collab-links{display:flex;flex-wrap:wrap;gap:10px;}
-.cf-collab-links a,.cf-collab-links>span{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(245,237,226,.15);text-decoration:none;transition:border-color .25s,background .25s;}
-.cf-collab-links a svg,.cf-collab-links>span svg{width:15px;height:15px;stroke:var(--white);fill:none;stroke-width:1.5;flex-shrink:0;}
+.cf-collab-links a{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(245,237,226,.15);text-decoration:none;transition:border-color .25s,background .25s;}
+.cf-collab-links a svg{width:15px;height:15px;stroke:var(--white);fill:none;stroke-width:1.5;flex-shrink:0;}
 .cf-collab-links a .cf-collab-xicon{font-size:.95rem;color:var(--white);line-height:1;}
-.cf-collab-links a span:last-child,.cf-collab-links>span span:last-child{font-size:.8rem;letter-spacing:.03em;color:var(--white);}
+.cf-collab-links a span:last-child{font-size:.8rem;letter-spacing:.03em;color:var(--white);}
 .cf-collab-links a:hover{border-color:var(--blue);background:rgba(58,160,255,.08);}
-.cf-collab-card--lime .cf-collab-links a:hover{border-color:var(--lime);background:rgba(200,242,48,.08);}
-.cf-collab-card--gold .cf-collab-links a:hover{border-color:var(--gold);background:rgba(245,200,66,.08);}
-.cf-collab-card--neutral .cf-collab-links a:hover{border-color:rgba(245,237,226,.55);background:rgba(245,237,226,.08);}
+.cf-collab-card:first-child .cf-collab-links a:hover{border-color:var(--lime);background:rgba(200,242,48,.08);}
+.cf-collab-card:nth-child(3) .cf-collab-links a:hover{border-color:rgba(245,237,226,.55);background:rgba(245,237,226,.08);}
 
 #cf-cta{padding:130px 64px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#150e08 0%,#1e1208 50%,#0e0b09 100%);}
 .cf-cta-blob{width:900px;height:900px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,92,26,.08) 0%,transparent 65%);}
@@ -161,12 +191,15 @@ a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
   #cf-nav{padding:16px 20px;}
   .cf-nav-social{gap:18px;}
   .cf-nav-slink span{display:none;}
-  #cf-cta,#cf-shop,#cf-collabs,#cf-about,#cf-performance{padding:80px 24px;}
+  #cf-partners,#cf-cta,#cf-shop,#cf-collabs,#cf-about{padding:80px 24px;}
+  .cf-feat-grid{grid-template-columns:1fr;gap:1px;}
   #cf-footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
   .cf-shop-grid{grid-template-columns:1fr;max-width:220px;}
-  .cf-perf-grid{grid-template-columns:1fr;}
-  .cf-perf-chart-wrap{height:220px;}
+  .cf-hero-flex{flex-direction:column;}
+  .cf-hero-bio-text{text-align:center;}
+  .cf-hero-chart-card{max-width:100%;width:100%;}
   #cf-hero{min-height:auto;padding:120px 20px 60px;}
+  .cf-hcc-chart-wrap{height:220px;}
 }
 </style>
 
@@ -207,67 +240,93 @@ a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
 <section id="cf-hero">
   <div class="cf-blob cf-hero-blob1"></div>
   <div class="cf-blob cf-hero-blob2"></div>
+  <div class="cf-hero-vision">
+    <p>This webpage is being developed as a multifaceted platform bringing together several interconnected projects and initiatives. Its scope extends beyond traditional content, encompassing sports betting strategy tracking and detailed market analysis and charting tied to the stock deep dives I publish.</p>
+  </div>
   <div class="cf-hero-badge">Personal Hub</div>
-  <h1 class="cf-h1">I Show My<span class="cf-accent">Work.</span></h1>
-  <p class="cf-hero-sub">Market research, sports betting strategy, and the occasional hot take — <strong>tracked here in public</strong>, win or lose, as it happens.</p>
-  <div class="cf-hero-ctas">
-    <a href="https://vanceroberts.substack.com" target="_blank" rel="noopener" class="cf-btn-primary">Read on Substack</a>
-    <a href="#cf-performance" class="cf-btn-ghost">See The Track Record</a>
+  <div class="cf-hero-flex" style="justify-content:center;">
+    <div class="cf-hero-chart-block">
+      <div class="cf-chart-heading">
+        <div class="cf-section-label">Watchlist</div>
+        <h2>Substack Stock Calls.</h2>
+        <p>Every ticker I've written up on Substack, tracked from the day I posted it, next to how the S&amp;P 500 did over the same stretch.</p>
+      </div>
+      <div class="cf-hero-chart-card">
+        <h3>Catalyst Flow Capital</h3>
+        <p class="cf-hcc-sub">Return on each name since I posted about it on Substack, vs. SPY since 8/21.</p>
+        <div class="cf-hcc-blended">
+          <span class="cf-hcc-blended-label">Blended Return</span>
+          <span class="cf-hcc-blended-val">+7.43%</span>
+        </div>
+        <div class="cf-hcc-chart-wrap">
+          <canvas id="cf-watchlist-chart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="cf-hero-chart-block">
+      <div class="cf-chart-heading">
+        <div class="cf-section-label">Bet Journal</div>
+        <h2>Bankroll <em style="font-style:italic;color:var(--lime);">Growth.</em></h2>
+        <p>Every FanDuel bet I've logged, win or lose, run as a running profit total against what that same cash would've earned just sitting in SPY.</p>
+      </div>
+      <div class="cf-hero-chart-card">
+        <h3>Bet Journal</h3>
+        <p class="cf-hcc-sub">30 resolved bets, 9/9–9/21/2026 — profit vs. what $18.30 held in SPY would have earned over the same span.</p>
+        <div class="cf-hcc-blended">
+          <span class="cf-hcc-blended-label">Total Profit</span>
+          <span class="cf-hcc-blended-val">+$193.01</span>
+        </div>
+        <div class="cf-hcc-chart-wrap">
+          <canvas id="cf-bets-chart"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="cf-scroll-hint"><div class="cf-scroll-arrow"></div>Scroll to discover</div>
 </section>
 
 <!-- ABOUT -->
 <section id="cf-about">
-  <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">About Me</div>
-    <h2>Not Here To Sell You Confidence.</h2>
-    <p>No certifications. No guru act. Just years of sitting with the work and writing down what actually holds up.</p>
-  </div>
   <div class="cf-about-flex cf-reveal">
     <div class="cf-about-photo">
       <img src="data:image/jpeg;base64,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" alt="Vance Roberts" width="140" height="140" loading="lazy">
     </div>
     <div class="cf-about-text">
+      <div class="cf-section-label">About Me</div>
       <p>I'm a 33 year old married auto assembler, with three sons. I do not have certifications of any kind. What I have instead is conviction that came from years of sitting with the work, running the same strategy through back tests, and paying attention to what held up and what did not.</p>
-      <p>This site is the one place I put it all — market research, sports betting strategy, the charts and frameworks that made it far enough to share, and the merch I sell. Some of it is mine alone, some was built with other people, and it's all building toward one evolving ecosystem where research, entertainment, commerce, and collaboration feed into each other.</p>
+      <p>This site is the one place I put the work. Some of it is mine alone. Some of it was built with other people. You will find the notes, the charts, the frameworks, the pieces that made it far enough to share, and the clothing I sell.</p>
+      <p>The platform will also serve as a home for podcasts, original media, a marketplace for stock market themed merchandise, gear, and memes, and a growing range of collaborations. The broader vision is to create an evolving ecosystem where market research, sports analytics, entertainment, commerce, and collaborative content can exist under one platform and continually build upon one another.</p>
       <p>Scroll around and do some clicking. Thanks for checking it out.</p>
     </div>
   </div>
 </section>
 
-<!-- PERFORMANCE -->
-<section id="cf-performance">
+<!-- PARTNERS -->
+<section id="cf-partners">
   <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Track Record</div>
-    <h2>Numbers, Not Vibes.</h2>
-    <p>Every stock call from Substack and every logged sports bet, tracked against a simple benchmark: what that same money would've done just sitting in SPY.</p>
+    <div class="cf-section-label" style="justify-content:center;">Partners</div>
+    <h2>Tools I Trust.</h2>
+    <p>Sites and tools I personally use and partner with — more will be added here over time.</p>
   </div>
-  <div class="cf-perf-grid">
-    <div class="cf-perf-card cf-reveal">
-      <div class="cf-section-label">Watchlist</div>
-      <h3>Substack Stock Calls</h3>
-      <p class="cf-perf-sub">Every ticker I've written up on Substack, tracked from the day I posted it, next to how the S&amp;P 500 did over the same stretch.</p>
-      <div class="cf-perf-stat">
-        <span class="cf-perf-stat-label">Blended Return</span>
-        <span class="cf-perf-stat-val">+7.43%</span>
-      </div>
-      <div class="cf-perf-chart-wrap">
-        <canvas id="cf-watchlist-chart"></canvas>
-      </div>
-    </div>
-    <div class="cf-perf-card cf-reveal">
-      <div class="cf-section-label">Bet Journal</div>
-      <h3>Bankroll Growth</h3>
-      <p class="cf-perf-sub">Every FanDuel bet I've logged, win or lose, run as a running profit total against what that same cash would've earned just sitting in SPY.</p>
-      <div class="cf-perf-stat">
-        <span class="cf-perf-stat-label">Total Profit</span>
-        <span class="cf-perf-stat-val">+$193.01</span>
-      </div>
-      <div class="cf-perf-chart-wrap">
-        <canvas id="cf-bets-chart"></canvas>
-      </div>
-    </div>
+  <div class="cf-feat-grid">
+    <a class="cf-card cf-reveal" href="https://www.dividendvision.com/?via=VtheCreatoR" target="_blank" rel="noopener">
+      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <h3>Dividend Vision</h3>
+      <p>A suite of dividend investing tools — screening, tracking, and research built for income-focused investors.</p>
+      <span class="cf-card-tag">Explore Dividend Vision &rarr;</span>
+    </a>
+    <a class="cf-card cf-reveal" href="https://tradetracs.com/" target="_blank" rel="noopener">
+      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg></div>
+      <h3>TradeTracs</h3>
+      <p>Investing and scanning tools for tracking setups and cutting through the noise.</p>
+      <span class="cf-card-tag">Explore TradeTracs &rarr;</span>
+    </a>
+    <a class="cf-card cf-reveal" href="https://stockoscope.com/" target="_blank" rel="noopener">
+      <div class="cf-card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3>Stockoscope</h3>
+      <p>Side-by-side stock comparison tools for sizing up opportunities at a glance.</p>
+      <span class="cf-card-tag">Explore Stockoscope &rarr;</span>
+    </a>
   </div>
 </section>
 
@@ -296,77 +355,15 @@ a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
   <a href="https://www.tattedtrading.shop/" target="_blank" rel="noopener" class="cf-btn-primary">Shop Tatted Trading</a>
 </section>
 
-<!-- PARTNERS & COLLABORATIONS -->
+<!-- COLLABORATIONS -->
 <section id="cf-collabs">
   <div class="cf-sec-head cf-reveal">
-    <div class="cf-section-label" style="justify-content:center;">Partners &amp; Collaborations</div>
-    <h2>People And Tools I Trust.</h2>
-    <p>Sites I use myself, and people I've worked with directly — click through and see for yourself.</p>
+    <div class="cf-section-label" style="justify-content:center;">Collaborations</div>
+    <h2>Built With Others.</h2>
+    <p>Work made alongside people who add something I can't do alone.</p>
   </div>
   <div class="cf-collab-grid">
-    <a class="cf-collab-card cf-reveal" href="https://www.dividendvision.com/?via=VtheCreatoR" target="_blank" rel="noopener">
-      <div class="cf-collab-img">
-        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dividend Vision">
-          <defs>
-            <radialGradient id="dvGlow" cx="50%" cy="35%" r="75%">
-              <stop offset="0%" stop-color="#2a1510"/>
-              <stop offset="100%" stop-color="#1a1410"/>
-            </radialGradient>
-          </defs>
-          <rect width="400" height="225" fill="url(#dvGlow)"/>
-          <g opacity="0.3" stroke="#ff5c1a" stroke-width="0.5">
-            <line x1="0" y1="56" x2="400" y2="56"/>
-            <line x1="0" y1="112" x2="400" y2="112"/>
-            <line x1="0" y1="168" x2="400" y2="168"/>
-          </g>
-          <g stroke="#ff5c1a" stroke-width="2" fill="none" stroke-linejoin="round">
-            <path d="M158 88 C172 68 228 68 242 88 C228 108 172 108 158 88 Z"/>
-            <circle cx="200" cy="88" r="10" fill="#ff5c1a" stroke="none" opacity="0.9"/>
-          </g>
-          <text x="200" y="160" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="27" fill="#f5ede2">Dividend Vision</text>
-          <text x="200" y="182" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10.5" letter-spacing="3" fill="#ff5c1a" opacity="0.8">INCOME-FOCUSED RESEARCH</text>
-        </svg>
-      </div>
-      <div class="cf-collab-info">
-        <h3>Dividend Vision</h3>
-        <p class="cf-collab-by">Screening, tracking, and research built for income-focused investors.</p>
-        <div class="cf-collab-links">
-          <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>dividendvision.com</span></span>
-        </div>
-      </div>
-    </a>
-    <a class="cf-collab-card cf-collab-card--lime cf-reveal" href="https://tradetracs.com/" target="_blank" rel="noopener">
-      <div class="cf-collab-img">
-        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TradeTracs">
-          <defs>
-            <radialGradient id="ttGlow" cx="50%" cy="35%" r="75%">
-              <stop offset="0%" stop-color="#1c2410"/>
-              <stop offset="100%" stop-color="#1a1410"/>
-            </radialGradient>
-          </defs>
-          <rect width="400" height="225" fill="url(#ttGlow)"/>
-          <g opacity="0.3" stroke="#c8f230" stroke-width="0.5">
-            <line x1="0" y1="56" x2="400" y2="56"/>
-            <line x1="0" y1="112" x2="400" y2="112"/>
-            <line x1="0" y1="168" x2="400" y2="168"/>
-          </g>
-          <g stroke="#c8f230" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="160,108 178,90 192,100 224,64"/>
-            <polyline points="206,64 224,64 224,82"/>
-          </g>
-          <text x="200" y="160" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="27" fill="#f5ede2">TradeTracs</text>
-          <text x="200" y="182" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10.5" letter-spacing="3" fill="#c8f230" opacity="0.8">SETUP SCANNING &amp; TRACKING</text>
-        </svg>
-      </div>
-      <div class="cf-collab-info">
-        <h3>TradeTracs</h3>
-        <p class="cf-collab-by">Investing and scanning tools for tracking setups and cutting through the noise.</p>
-        <div class="cf-collab-links">
-          <span><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg><span>tradetracs.com</span></span>
-        </div>
-      </div>
-    </a>
-    <div class="cf-collab-card cf-collab-card--gold cf-reveal">
+    <div class="cf-collab-card cf-reveal">
       <div class="cf-collab-img"><img src="https://img-v2-prod.whop.com/unsafe/rs:fit:800:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fpublic%2Fuploads%2Fuser_37594617%2Fimage%2Faccess_passes%2F2026-09-08%2F7fc2cc63-f3bd-46ad-a64e-98ed52bac8ca.jpeg@avif?w=800&q=75" alt="Finding the next multi-bagger small cap." loading="lazy"></div>
       <div class="cf-collab-info">
         <h3>Finding the next multi-bagger small cap.</h3>
@@ -400,7 +397,7 @@ a.cf-collab-card{display:block;text-decoration:none;color:inherit;}
         </div>
       </div>
     </div>
-    <div class="cf-collab-card cf-collab-card--neutral cf-reveal">
+    <div class="cf-collab-card cf-reveal">
       <div class="cf-collab-img cf-tsk-banner">
         <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TheStocksKing">
           <defs>
