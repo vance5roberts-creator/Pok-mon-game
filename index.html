@@ -27,9 +27,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 #cf-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.7;}
 
 #cf-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 64px;background:rgba(14,11,9,0.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.cf-nav-sponsor{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;font-size:.92rem;font-weight:700;letter-spacing:.03em;color:var(--white);text-decoration:none;white-space:nowrap;transition:color .2s;}
-.cf-nav-sponsor b{font-weight:800;}
-.cf-nav-sponsor:hover,.cf-nav-sponsor:hover b{color:var(--blue);}
+.cf-nav-sponsor{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:14px;padding:9px 30px;border:1px solid rgba(58,160,255,.3);border-radius:10px;background:rgba(58,160,255,.07);text-decoration:none;white-space:nowrap;transition:border-color .25s,background .25s;}
+.cf-nav-sponsor:hover{border-color:var(--blue);background:rgba(58,160,255,.14);}
+.cf-nav-sponsor-icon{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cf-nav-sponsor-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:2;}
+.cf-nav-sponsor-text{display:flex;flex-direction:column;line-height:1.12;text-align:left;}
+.cf-nav-sponsor-eyebrow{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#7a6a58;}
+.cf-nav-sponsor-name{font-family:'DM Serif Display',serif;font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:.01em;transition:color .25s;}
+.cf-nav-sponsor:hover .cf-nav-sponsor-name{color:var(--blue);}
 .cf-logo{font-family:'DM Serif Display',serif;font-size:1.5rem;letter-spacing:.02em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .cf-logo .cf-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;box-shadow:var(--glow-o);animation:cf-pulse 2s ease-in-out infinite;flex-shrink:0;}
 .cf-logo em{font-style:italic;color:var(--orange);}
@@ -195,8 +200,11 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   #cf-nav{padding:16px 20px;}
   .cf-nav-social{gap:18px;}
   .cf-nav-slink span{display:none;}
-  .cf-nav-sponsor{font-size:.7rem;gap:4px;}
-  .cf-nav-sponsor span{display:none;}
+  .cf-nav-sponsor{padding:6px 16px;gap:8px;}
+  .cf-nav-sponsor-icon{width:24px;height:24px;}
+  .cf-nav-sponsor-icon svg{width:17px;height:17px;}
+  .cf-nav-sponsor-eyebrow{display:none;}
+  .cf-nav-sponsor-name{font-size:1.05rem;}
   #cf-partners,#cf-shop,#cf-collabs,#cf-about{padding:80px 24px;}
   .cf-feat-grid{grid-template-columns:1fr;gap:1px;}
   #cf-footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
@@ -223,8 +231,11 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     </span>
   </a>
   <a href="https://tradetracs.com/" target="_blank" rel="noopener" class="cf-nav-sponsor">
-    <span>Sponsored by</span>
-    <b>TradeTracs</b>
+    <span class="cf-nav-sponsor-icon"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg></span>
+    <span class="cf-nav-sponsor-text">
+      <span class="cf-nav-sponsor-eyebrow">Sponsored by</span>
+      <span class="cf-nav-sponsor-name">TradeTracs</span>
+    </span>
   </a>
   <div class="cf-nav-social">
     <a href="https://x.com/Vance_Roberts5" target="_blank" rel="noopener" class="cf-nav-slink cf-ns-x">
