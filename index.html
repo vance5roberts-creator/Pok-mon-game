@@ -32,7 +32,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-nav-sponsor-icon{width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
 .cf-nav-sponsor-icon svg{width:26px;height:26px;}
 .cf-nav-sponsor-text{display:flex;flex-direction:column;line-height:1;text-align:left;}
-.cf-nav-sponsor-eyebrow{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#7a6a58;margin-bottom:3px;}
+.cf-nav-sponsor-eyebrow{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#7a6a58;}
 .cf-nav-sponsor-trade{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:.01em;color:#d946ef;}
 .cf-nav-sponsor-tracs{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:.01em;color:#2ee6b8;margin-top:-2px;}
 .cf-logo{font-family:'DM Serif Display',serif;font-size:1.5rem;letter-spacing:.02em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;}
@@ -93,6 +93,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-hero-gear-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .cf-hero-gear-price{position:absolute;bottom:4px;right:4px;background:rgba(14,11,9,.85);color:var(--lime);font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.02em;}
 @keyframes cf-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@media(min-width:1400px){
+  .cf-hero-gear-item{position:absolute;top:50%;width:120px;height:120px;}
+  .cf-hero-gear-item .cf-hero-gear-price{font-size:.68rem;padding:3px 8px;}
+  .cf-hero-gear-item--left-1{left:56px;margin-top:-62px;}
+  .cf-hero-gear-item--right-1{right:56px;margin-top:-62px;}
+}
 .cf-hero-intro{max-width:720px;text-align:center;margin-bottom:56px;animation:cf-fadeup 1s .15s ease both;}
 .cf-hero-intro-h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.08;color:var(--white);margin-bottom:20px;}
 .cf-hero-intro-h1 em{font-style:italic;background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -240,6 +246,7 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     </span>
   </a>
   <a href="https://tradetracs.com/" target="_blank" rel="noopener" class="cf-nav-sponsor">
+    <span class="cf-nav-sponsor-eyebrow">Sponsored by</span>
     <span class="cf-nav-sponsor-icon">
       <svg viewBox="0 0 28 28" fill="none">
         <defs>
@@ -254,7 +261,6 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
       </svg>
     </span>
     <span class="cf-nav-sponsor-text">
-      <span class="cf-nav-sponsor-eyebrow">Sponsored by</span>
       <span class="cf-nav-sponsor-trade">Trade</span>
       <span class="cf-nav-sponsor-tracs">Tracs</span>
     </span>
@@ -291,11 +297,11 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
   </div>
   <div class="cf-hero-gear">
     <span class="cf-hero-gear-eyebrow">Tatted Trading</span>
-    <a href="https://customartnclothes.printify.me/product/27233260" target="_blank" rel="noopener" class="cf-hero-gear-item" style="animation-delay:0s;">
+    <a href="https://customartnclothes.printify.me/product/27233260" target="_blank" rel="noopener" class="cf-hero-gear-item cf-hero-gear-item--left-1" style="animation-delay:0s;">
       <img src="https://images-api.printify.com/mockup/69ad61877049e76f1e058915/25439/98502/voo-chill-pixel-crewneck-sweatshirt.jpg?camera_label=front&revision=1772971894890" alt="VOO Chill Pixel Crewneck Sweatshirt" loading="lazy">
       <span class="cf-hero-gear-price">$37.00</span>
     </a>
-    <a href="https://customartnclothes.printify.me/product/28530961" target="_blank" rel="noopener" class="cf-hero-gear-item" style="animation-delay:.9s;">
+    <a href="https://customartnclothes.printify.me/product/28530961" target="_blank" rel="noopener" class="cf-hero-gear-item cf-hero-gear-item--right-1" style="animation-delay:.9s;">
       <img src="https://images-api.printify.com/mockup/69fff561de847272360d5a3e/45750/16655/i-told-you-so-bear-meme-sticker-surprised-bear-pointing-at-falling-chart-1.jpg?camera_label=front&revision=1778382217075" alt="I Told You So Bear Meme Sticker" loading="lazy">
       <span class="cf-hero-gear-price">$3.99</span>
     </a>
