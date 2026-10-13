@@ -87,17 +87,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cf-hero-vision p{font-size:1.08rem;font-weight:300;color:var(--text);line-height:1.85;margin-bottom:18px;}
 .cf-hero-vision p:last-child{margin-bottom:0;}
 .cf-hero-gear{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px;margin-bottom:50px;animation:cf-fadeup 1s .3s ease both;}
-.cf-hero-gear-eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#7a6a58;}
+.cf-hero-gear-eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--lime);}
 .cf-hero-gear-item{position:relative;display:block;width:76px;height:76px;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--surface);box-shadow:0 10px 24px rgba(0,0,0,.35);animation:cf-float 3.6s ease-in-out infinite;transition:border-color .25s,transform .2s;}
 .cf-hero-gear-item:hover{border-color:var(--lime);animation-play-state:paused;transform:translateY(-4px) scale(1.05);}
 .cf-hero-gear-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .cf-hero-gear-price{position:absolute;bottom:4px;right:4px;background:rgba(14,11,9,.85);color:var(--lime);font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.02em;}
 @keyframes cf-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 @media(min-width:1400px){
-  .cf-hero-gear-item{position:absolute;top:50%;width:120px;height:120px;}
+  .cf-hero-gear{position:absolute;top:50%;right:56px;transform:translateY(-50%);flex-direction:column;flex-wrap:nowrap;gap:22px;margin-bottom:0;}
+  .cf-hero-gear-eyebrow{font-size:.78rem;}
+  .cf-hero-gear-item{width:120px;height:120px;}
   .cf-hero-gear-item .cf-hero-gear-price{font-size:.68rem;padding:3px 8px;}
-  .cf-hero-gear-item--left-1{left:56px;margin-top:-62px;}
-  .cf-hero-gear-item--right-1{right:56px;margin-top:-62px;}
 }
 .cf-hero-intro{max-width:720px;text-align:center;margin-bottom:56px;animation:cf-fadeup 1s .15s ease both;}
 .cf-hero-intro-h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.08;color:var(--white);margin-bottom:20px;}
@@ -296,12 +296,12 @@ a.cf-card{display:block;text-decoration:none;color:inherit;}
     <p>Around that core sits the rest of what I'm building: the tools and people I work with, and a small clothing line that grew out of the same interest in markets. None of it is presented as advice. It's a transparent log of the work and how it's actually performing.</p>
   </div>
   <div class="cf-hero-gear">
-    <span class="cf-hero-gear-eyebrow">Tatted Trading</span>
-    <a href="https://customartnclothes.printify.me/product/27233260" target="_blank" rel="noopener" class="cf-hero-gear-item cf-hero-gear-item--left-1" style="animation-delay:0s;">
+    <span class="cf-hero-gear-eyebrow">Shop</span>
+    <a href="https://customartnclothes.printify.me/product/27233260" target="_blank" rel="noopener" class="cf-hero-gear-item" style="animation-delay:0s;">
       <img src="https://images-api.printify.com/mockup/69ad61877049e76f1e058915/25439/98502/voo-chill-pixel-crewneck-sweatshirt.jpg?camera_label=front&revision=1772971894890" alt="VOO Chill Pixel Crewneck Sweatshirt" loading="lazy">
       <span class="cf-hero-gear-price">$37.00</span>
     </a>
-    <a href="https://customartnclothes.printify.me/product/28530961" target="_blank" rel="noopener" class="cf-hero-gear-item cf-hero-gear-item--right-1" style="animation-delay:.9s;">
+    <a href="https://customartnclothes.printify.me/product/28530961" target="_blank" rel="noopener" class="cf-hero-gear-item" style="animation-delay:.9s;">
       <img src="https://images-api.printify.com/mockup/69fff561de847272360d5a3e/45750/16655/i-told-you-so-bear-meme-sticker-surprised-bear-pointing-at-falling-chart-1.jpg?camera_label=front&revision=1778382217075" alt="I Told You So Bear Meme Sticker" loading="lazy">
       <span class="cf-hero-gear-price">$3.99</span>
     </a>
