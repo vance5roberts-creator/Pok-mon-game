@@ -5,9 +5,10 @@ Pulls free, keyless daily closing prices from Stooq for every ticker below plus
 SPY, computes each one's percent return since the day it was first posted on
 Substack, and writes the result as JSON for the website to fetch.
 
-To add a new call: add one line to WATCHLIST with the ticker and the date
-(YYYY-MM-DD) it was posted. Everything else updates automatically the next
-time this script runs.
+To add a new call: add one entry to WATCHLIST with the ticker, the date
+(YYYY-MM-DD) it was posted, and a one-sentence "about" line on what the
+business is exposed to sector-wise. Everything else updates automatically
+the next time this script runs.
 """
 import datetime
 import json
@@ -15,17 +16,37 @@ import os
 import urllib.error
 import urllib.request
 
-# Ticker -> the trading day each call was first posted on Substack.
+# Ticker -> { start: day first posted on Substack, about: one-sentence sector/fundamental exposure }.
 WATCHLIST = {
-    "ALNT": "2026-08-21",
-    "INOD": "2026-08-28",
-    "NXT": "2026-09-02",
-    "CW": "2026-09-15",
-    "RRX": "2026-09-23",
-    "POWL": "2026-10-06",
+    "ALNT": {
+        "start": "2026-08-21",
+        "about": "Allient Inc. makes precision motion-control components (motors, servo drives, encoders) for industrial, vehicle, aerospace/defense, and medical equipment.",
+    },
+    "INOD": {
+        "start": "2026-08-28",
+        "about": "Innodata is a data-engineering company that prepares, annotates, and curates training data enterprises and big tech use to build and deploy AI models.",
+    },
+    "NXT": {
+        "start": "2026-09-02",
+        "about": "Nextracker (rebranding as Nextpower) makes solar tracker hardware and control software for utility-scale solar power plants.",
+    },
+    "CW": {
+        "start": "2026-09-15",
+        "about": "Curtiss-Wright is an aerospace & defense engineered-products maker: actuation and sensor systems, defense electronics, and naval propulsion/power equipment.",
+    },
+    "RRX": {
+        "start": "2026-09-23",
+        "about": "Regal Rexnord makes industrial motion and power equipment — electric motors, power transmission components, and automation/control products.",
+    },
+    "POWL": {
+        "start": "2026-10-06",
+        "about": "Powell Industries builds custom electrical switchgear and power-distribution equipment for oil & gas, utilities, and heavy industry.",
+    },
 }
 BENCHMARK = "SPY"
-BENCHMARK_START = min(WATCHLIST.values())
+BENCHMARK_START = min(v["start"] for v in WATCHLIST.values())
+BENCHMARK_ABOUT = "Tracks the S&P 500 — broad exposure across all major U.S. sectors, used here as the benchmark."
+BLENDED_ABOUT = "Simple average of the active ticker calls above — not sector-specific, it's the combined performance of this watchlist."
 
 COLORS = {
     "ALNT": "#f5c842",
@@ -89,7 +110,7 @@ def build_series(raw_closes, start_date, all_dates):
 
 
 def main():
-    symbols = list(WATCHLIST.items()) + [(BENCHMARK, BENCHMARK_START)]
+    symbols = [(t, v["start"]) for t, v in WATCHLIST.items()] + [(BENCHMARK, BENCHMARK_START)]
 
     raw = {}
     errors = []
@@ -133,9 +154,12 @@ def main():
         "tickers": tickers,
         "series": {t: series_values[t] for t in tickers},
         "since": {t: since_dates[t] for t in tickers},
+        "about": {t: WATCHLIST[t]["about"] for t in tickers},
         "spy": series_values.get(BENCHMARK, []),
         "spySince": since_dates.get(BENCHMARK),
+        "spyAbout": BENCHMARK_ABOUT,
         "blended": blended,
+        "blendedAbout": BLENDED_ABOUT,
     }
     if errors:
         out["errors"] = errors

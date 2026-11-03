@@ -380,6 +380,14 @@
     "RRX": "2026-09-23",
     "POWL": "2026-10-06"
   },
+  "about": {
+    "ALNT": "Allient Inc. makes precision motion-control components (motors, servo drives, encoders) for industrial, vehicle, aerospace/defense, and medical equipment.",
+    "INOD": "Innodata is a data-engineering company that prepares, annotates, and curates training data enterprises and big tech use to build and deploy AI models.",
+    "NXT": "Nextracker (rebranding as Nextpower) makes solar tracker hardware and control software for utility-scale solar power plants.",
+    "CW": "Curtiss-Wright is an aerospace & defense engineered-products maker: actuation and sensor systems, defense electronics, and naval propulsion/power equipment.",
+    "RRX": "Regal Rexnord makes industrial motion and power equipment \u2014 electric motors, power transmission components, and automation/control products.",
+    "POWL": "Powell Industries builds custom electrical switchgear and power-distribution equipment for oil & gas, utilities, and heavy industry."
+  },
   "spy": [
     0.0,
     -0.29,
@@ -425,6 +433,7 @@
     0.43
   ],
   "spySince": "2026-08-21",
+  "spyAbout": "Tracks the S&P 500 \u2014 broad exposure across all major U.S. sectors, used here as the benchmark.",
   "blended": [
     0.0,
     -2.88,
@@ -468,5 +477,6 @@
     -6.7,
     -5.96,
     -6.2
-  ]
+  ],
+  "blendedAbout": "Simple average of the active ticker calls above \u2014 not sector-specific, it's the combined performance of this watchlist."
 }
