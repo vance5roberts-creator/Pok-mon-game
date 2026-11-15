@@ -7,12 +7,33 @@
 <meta name="description" content="Photos from Traditions Pre-School.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<svg class="sprite" id="sprite" aria-hidden="true" focusable="false"><defs>
+<filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter>
+<symbol id="d-star" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 7l7 17 18 1-14 12 5 18-16-10-16 10 5-18L7 25l18-1z"/></symbol>
+<symbol id="d-sun" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="10"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8M14 14l6 6M44 44l6 6M50 14l-6 6M20 44l-6 6"/></symbol>
+<symbol id="d-cloud" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 47C8 47 7 33 18 33c0-11 16-15 22-5 10-4 18 6 12 14-1 4-4 5-6 5z"/></symbol>
+<symbol id="d-pencil" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 55l4-15L44 10l10 10-30 30zM39 15l10 10M14 40l10 10"/></symbol>
+<symbol id="d-apple" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 20C22 12 8 20 12 38c3 14 14 18 20 14 6 4 17 0 20-14 4-18-10-26-20-18zM32 19c0-6 2-9 6-11M32 18c-4-6-8-6-10-4"/></symbol>
+<symbol id="d-book" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h20c2 0 4 2 4 4v34c0-2-2-4-4-4H8zM56 14H36c-2 0-4 2-4 4v34c0-2 2-4 4-4h20z"/></symbol>
+<symbol id="d-heart" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 54C10 38 8 22 18 16c7-4 12 0 14 5 2-5 7-9 14-5 10 6 8 22-14 38z"/></symbol>
+<symbol id="d-tree" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8C18 8 12 22 20 30c-8 6 0 18 12 14 12 4 20-8 12-14 8-8 2-22-12-22zM32 44v14"/></symbol>
+<symbol id="d-palette" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8C16 8 6 20 8 34c2 14 16 22 26 20 6-1 4-8 8-10 6-2 16 0 16-10C58 20 46 8 32 8z"/><circle cx="22" cy="26" r="3"/><circle cx="34" cy="18" r="3"/><circle cx="46" cy="26" r="3"/><circle cx="20" cy="38" r="3"/></symbol>
+<symbol id="d-note" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M25 46V14l26-6v32"/><ellipse cx="18" cy="46" rx="7" ry="5"/><ellipse cx="44" cy="40" rx="7" ry="5"/></symbol>
+<symbol id="d-rainbow" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 48a26 26 0 0152 0M14 48a18 18 0 0136 0M22 48a10 10 0 0120 0"/></symbol>
+<symbol id="d-face" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><circle cx="24" cy="28" r="2"/><circle cx="40" cy="28" r="2"/><path d="M22 40q10 10 20 0"/></symbol>
+<symbol id="d-blocks" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="35" width="21" height="21"/><rect x="30" y="35" width="21" height="21"/><rect x="18" y="12" width="21" height="21" transform="rotate(-6 28 22)"/><path d="M13 45h9M36 45h9M24 22h9"/></symbol>
+<symbol id="d-flask" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 8h12M28 8v18L12 52c-2 4 0 6 4 6h32c4 0 6-2 4-6L36 26V8M18 44h28"/></symbol>
+<symbol id="d-house" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 57V29L32 11l24 18v28zM26 57V41h12v16M32 11V4l9 3-9 3M19 33h5v5h-5zM40 33h5v5h-5z"/></symbol>
+<symbol id="d-bear" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="36" r="19"/><circle cx="17" cy="18" r="6"/><circle cx="47" cy="18" r="6"/><circle cx="26" cy="33" r="1.5"/><circle cx="38" cy="33" r="1.5"/><ellipse cx="32" cy="42" rx="5" ry="4"/></symbol>
+<symbol id="d-shield" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l20 8v16c0 14-9 24-20 28C21 54 12 44 12 30V14z"/><path d="M23 31l7 7 12-14"/></symbol>
+<symbol id="d-hands" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 40c0-8 4-14 10-14 2 0 3 1 4 3 1-2 3-3 5-3 5 0 8 6 8 12v10c0 4-3 8-8 8H24c-6 0-12-6-12-14z"/></symbol>
+</defs></svg>
 <header class="site"><div class="wrap nav">
-  <a class="logo" href="index.html"><span class="logo-mark">🌟</span>Traditions Pre-School</a>
+  <a class="logo" href="index.html"><svg class="doodle "  aria-hidden="true"><use href="#d-house"/></svg><span><b>Traditions</b><small>pre-school</small></span></a>
   <button class="menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -27,22 +48,21 @@
 </div></header>
 <main>
 
-<section class="page-title"><div class="wrap"><span class="eyebrow">Gallery</span><h1>Life at Traditions</h1>
-<p class="muted">Placeholders: swap each tile for a real photo (see README).</p></div></section>
+<section class="page-title"><div class="wrap"><div><span class="eyebrow">Gallery</span><h1>Life at Traditions</h1><p class="muted">Placeholders: swap each tile for a real photo (see README).</p></div><svg class="doodle " style="color:#2f6b57" aria-hidden="true"><use href="#d-palette"/></svg></div></section>
 <section><div class="wrap"><div class="gal">
-<div class="tile" style="background:#ffe3a3">🎨<span>Art time</span></div>
-<div class="tile" style="background:#cfe0ff">📚<span>Story hour</span></div>
-<div class="tile" style="background:#c7f0e0">🌳<span>Playground</span></div>
-<div class="tile" style="background:#ffd0ca">🧩<span>Puzzles</span></div>
-<div class="tile" style="background:#e5d5ff">🎵<span>Music</span></div>
-<div class="tile" style="background:#d3f1ff">🔬<span>Science</span></div>
-<div class="tile" style="background:#ffe0e0">🍎<span>Snack time</span></div>
-<div class="tile" style="background:#fff0b8">🧱<span>Building</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-palette"/></svg><span>Art time</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-book"/></svg><span>Story hour</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-tree"/></svg><span>Playground</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-blocks"/></svg><span>Building</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-note"/></svg><span>Music</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-flask"/></svg><span>Science</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-apple"/></svg><span>Snack time</span></div>
+<div class="tile"><svg class="doodle "  aria-hidden="true"><use href="#d-rainbow"/></svg><span>Rainy day</span></div>
 </div></div></section>
 </main>
 <footer class="site"><div class="wrap">
   <div class="foot">
-    <div><h4>Traditions Pre-School</h4><p>A warm, play-based start to a lifelong love of learning.</p></div>
+    <div><h4>Traditions Pre-School</h4><p class="muted">A gentle, play-based place to begin.</p></div>
     <div><h4>Explore</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
     <div><h4>Visit</h4><ul><li>123 Main Street</li><li>Your Town, ST 00000</li><li>(555) 123-4567</li><li>hello@traditionspreschool.example</li></ul></div>
   </div>
