@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact | Traditions Pre-School</title>
+<meta name="description" content="Contact Traditions Pre-School.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site"><div class="wrap nav">
+  <a class="logo" href="index.html"><span class="logo-mark">🌟</span>Traditions Pre-School</a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html" aria-current="page">Contact</a></li>
+    <li><a class="pay" href="pay.html">Pay Tuition</a></li>
+  </ul>
+</div></header>
+<main>
+
+<section class="page-title"><div class="wrap"><span class="eyebrow">Contact</span><h1>Say hello</h1></div></section>
+<section><div class="wrap grid g2">
+  <div class="card"><h3>Visit us</h3>
+    <p>📍 123 Main Street<br>Your Town, ST 00000</p>
+    <p>📞 (555) 123-4567<br>✉️ hello@traditionspreschool.example</p>
+    <p>🕗 Mon–Fri · 7:30 AM – 5:30 PM</p>
+    <div class="tile" style="aspect-ratio:16/9;background:var(--sky);font-size:2.5rem;border-radius:16px">🗺️<span>Add a map embed</span></div>
+  </div>
+  <div class="card"><h3>Send a message</h3>
+    <form data-endpoint="/api/inquiry">
+      <label>Name<input name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Send</button><div class="status" role="status"></div>
+    </form>
+  </div>
+</div></section>
+</main>
+<footer class="site"><div class="wrap">
+  <div class="foot">
+    <div><h4>Traditions Pre-School</h4><p>A warm, play-based start to a lifelong love of learning.</p></div>
+    <div><h4>Explore</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li>123 Main Street</li><li>Your Town, ST 00000</li><li>(555) 123-4567</li><li>hello@traditionspreschool.example</li></ul></div>
+  </div>
+  <div class="fine">© <span id="yr"></span> Traditions Pre-School. All rights reserved.</div>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script src="site.js"></script>
+</body>
+</html>
